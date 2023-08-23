@@ -4,12 +4,19 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SquareeComponent } from './squaree/squaree.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { SignupComponent } from './pages/signup/signup.component';
+import { LoginComponent } from './pages/login/login.component';
 
 @NgModule({
   declarations: [
-    AppComponent
-  , SquareeComponent],
+    AppComponent,
+    NavbarComponent,
+    FooterComponent,
+    SignupComponent,
+    LoginComponent
+],
   imports: [
     BrowserModule,
     AppRoutingModule,
