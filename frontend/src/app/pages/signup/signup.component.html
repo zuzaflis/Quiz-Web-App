@@ -1,8 +1,79 @@
-
+<div class="bootstrap-wrapper">
 	<div class="container">
-		<div class="grid">
-            <div class="g-col-4">.g-col-4</div>
-            <div class="g-col-4">.g-col-4</div>
-            <div class="g-col-4">.g-col-4</div>
-          </div>
+		<div class="row">
+			<div class="col-md-6 offset-md-3">
+                <div class="container text-center">
+                    <img src="../../../assets/login1.jpg" alt="iconR">
+                </div>
+                <h3 class="text-center">Register</h3>
+                {{user | json}}
+                <form (ngSubmit) = "formSubmit()">
+                       <!--Username-->
+                        <mat-form-field class = "full-width">
+                          <mat-label>Username</mat-label>
+                          <input 
+                          [(ngModel)] = "user.username"
+                          name = "username"
+                          matInput placeholder="Enter here">
+                          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                        </mat-form-field>
+
+                           <!--Password-->
+                           <mat-form-field class = "full-width">
+                            <mat-label>Password</mat-label>
+                            <input type="password"
+                            [(ngModel)] = "user.password"
+                            name = "password"
+                             matInput placeholder="Enter here">
+                            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                          </mat-form-field>
+                     
+                             <!--First Name-->
+                        <mat-form-field class = "full-width">
+                            <mat-label>First Name</mat-label>
+                            <input 
+                            [(ngModel)] = "user.firstName"
+                            name = "firstName"
+                            matInput placeholder="Enter here">
+                            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                          </mat-form-field>
+                     
+                             <!--Last Name-->
+                        <mat-form-field class = "full-width">
+                            <mat-label>Last Name</mat-label>
+                            <input 
+                            [(ngModel)] = "user.lastName"
+                            name = "lastName"
+                            matInput placeholder="Enter here">
+                            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                          </mat-form-field>
+                     
+                             <!--Email-->
+                        <mat-form-field class = "full-width">
+                            <mat-label>Email</mat-label>
+                            <input
+                            [(ngModel)] = "user.email"
+                            name = "email"
+                             matInput placeholder="Enter here">
+                            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                          </mat-form-field>
+                           <!--Phone Number-->
+                           <mat-form-field class = "full-width">
+                            <mat-label>Phone Number</mat-label>
+                            <input 
+                            [(ngModel)] = "user.phone"
+                            name = "phone"
+                            matInput placeholder="Enter here">
+                            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                          </mat-form-field>
+                       
+                     <div class="container text-center" >
+                        <button type = "submit" mat-raised-button color="primary" >Register</button>
+                    
+                    </div>
+
+                </form>
+            </div>
+		</div>
 	</div>
+</div>
