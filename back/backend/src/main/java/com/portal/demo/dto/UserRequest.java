@@ -1,16 +1,14 @@
 package com.portal.demo.dto;
 
 import com.portal.demo.model.UserRole;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.HashSet;
 import java.util.Set;
 
 @Data
 @Builder
+@Getter
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserRequest {

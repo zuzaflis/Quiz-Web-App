@@ -21,6 +21,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public void createUser(UserRequest userRequest) {
 
+        if(userRepository.findByUsername(userRequest.getUsername()) != null){
+            throw new IllegalArgumentException("Uzytkownik o podanym username już istnieje");
+        }
+
      User user = User.builder()
              .username(userRequest.getUsername())
              .password(userRequest.getPassword())
