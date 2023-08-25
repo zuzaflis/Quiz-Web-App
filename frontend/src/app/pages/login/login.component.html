@@ -1,1 +1,42 @@
-<p>login works!</p>
+<div class="bootstrap-wrapper">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 offset-md-3">
+                <div class="container text-center">
+                    <img src="../../../assets/login1.jpg" alt="iconR">
+                </div>
+                <h3 class="text-center">Sign in</h3>
+              
+                <form (ngSubmit) = "formSubmit()">
+                       <!--Username-->
+                        <mat-form-field class = "full-width">
+                          <mat-label>Username</mat-label>
+                          <input 
+                          required
+                          [(ngModel)] = "user.username"
+                          name = "username"
+                          matInput placeholder="Enter here">
+                          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                        </mat-form-field>
+
+                           <!--Password-->
+                           <mat-form-field class = "full-width">
+                            <mat-label>Password</mat-label>
+                            <input 
+                            required
+                            type="password"
+                            [(ngModel)] = "user.password"
+                            name = "password"
+                             matInput placeholder="Enter here">
+                            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                          </mat-form-field>
+                       
+                     <div class="container text-center" >
+                        <button type = "submit" mat-raised-button color="primary" >Login</button>
+                    
+                    </div>
+                </form>
+            </div>
+		</div>
+	</div>
+</div>
