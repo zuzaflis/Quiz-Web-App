@@ -1,25 +1,29 @@
 package com.portal.demo.service.impl;
 
+import com.portal.demo.auth.AuthenticationResponse;
+import com.portal.demo.config.JwtService;
 import com.portal.demo.dto.UserRequest;
 import com.portal.demo.dto.UserResponse;
 import com.portal.demo.model.User;
-import com.portal.demo.model.UserRole;
 import com.portal.demo.repository.RoleRepository;
 import com.portal.demo.repository.UserRepository;
 import com.portal.demo.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.Set;
-
+@RequiredArgsConstructor
 @Service
 public class UserServiceImpl implements UserService {
-    @Autowired
-    UserRepository userRepository;
-    @Autowired
-    RoleRepository roleRepository;
+
+   private final UserRepository userRepository;
+    private final RoleRepository roleRepository;
+    private final PasswordEncoder passwordEncoder;
+    private final JwtService jwtService;
+    private final AuthenticationManager authenticationManager;
     @Override
-    public void createUser(UserRequest userRequest) {
+    public AuthenticationResponse createUser(UserRequest userRequest) {
 
         if(userRepository.findByUsername(userRequest.getUsername()) != null){
             throw new IllegalArgumentException("Uzytkownik o podanym username już istnieje");
@@ -27,7 +31,7 @@ public class UserServiceImpl implements UserService {
 
      User user = User.builder()
              .username(userRequest.getUsername())
-             .password(userRequest.getPassword())
+             .password(passwordEncoder.encode(userRequest.getPassword()))
              .firstName(userRequest.getFirstName())
              .lastName(userRequest.getLastName())
              .email(userRequest.getEmail())
@@ -38,6 +42,10 @@ public class UserServiceImpl implements UserService {
      userRepository.save(user);
      System.out.println(String
              .format("User %s is saved", user.getUsername()));
+     var jwtToken = jwtService.generateToken(user);
+     return AuthenticationResponse.builder()
+             .token(jwtToken)
+             .build();
     }
 
     @Override
