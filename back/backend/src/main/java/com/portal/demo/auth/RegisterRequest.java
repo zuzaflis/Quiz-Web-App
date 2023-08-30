@@ -1,17 +1,14 @@
-package com.portal.demo.dto;
+package com.portal.demo.auth;
 
-import com.portal.demo.model.UserRole;
+import com.portal.demo.model.Role;
 import lombok.*;
-
-import java.util.HashSet;
-import java.util.Set;
 
 @Data
 @Builder
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserRequest {
+public class RegisterRequest {
     private String username;
     private String password;
     private String firstName;
@@ -19,6 +16,6 @@ public class UserRequest {
     private String email;
     private String phone;
     private String profile;
-    private Set<UserRole> userRoles = new HashSet<>();
+    private Role role;
 
 }

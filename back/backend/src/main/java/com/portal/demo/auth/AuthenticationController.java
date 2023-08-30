@@ -1,31 +1,36 @@
 package com.portal.demo.auth;
 
-import com.portal.demo.dto.UserRequest;
-import com.portal.demo.service.UserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/auth")
 public class AuthenticationController {
-    private final UserService userService;
+    private final AuthenticationService authenticationService;
+    private static final Logger logger = LoggerFactory.getLogger(AuthenticationController.class);
 
     @PostMapping("/register")
-    @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<AuthenticationResponse> register(
-            @RequestBody UserRequest userRequest)
+            @RequestBody RegisterRequest registerRequest)
     {
-       return ResponseEntity.ok(userService.createUser(userRequest));
+       return ResponseEntity.ok(authenticationService.register(registerRequest));
     }
     @PostMapping("/authenticate")
-    @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<AuthenticationResponse> authenticate(
             @RequestBody AuthenticationRequest authRequest)
+
     {
-        return ResponseEntity.ok(userService.authenticate(authRequest));
+        logger.info("Received authentication request for username: {}", authRequest.getUsername());
+
+        return ResponseEntity.ok(authenticationService.authenticate(authRequest));
     }
 
 }

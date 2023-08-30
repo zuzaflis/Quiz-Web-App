@@ -1,14 +1,13 @@
 package com.portal.demo.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -27,22 +26,17 @@ public class User implements UserDetails {
     private String email;
     private String phone;
     private String profile;
-    private boolean enabled = true;
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
-
-    //user role
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    @JsonIgnore
-    private Set<UserRole> userRoles = new HashSet<>();
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        Set<Authority> set = new HashSet<>();
-        this.userRoles.forEach(userRole -> {
-            set.add(new Authority(userRole.getRole().getRoleName()));
-        });
-
-        return set;
+       return List.of(new SimpleGrantedAuthority(
+               (role==null)?
+                       Role.USER.toString()
+                       :
+                       role.toString()));
 
     }
     @Override
@@ -67,6 +61,11 @@ public class User implements UserDetails {
 
     @Override
     public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
         return true;
     }
 
