@@ -1,5 +1,6 @@
 package com.portal.demo.service.impl;
 
+import com.portal.demo.auth.AuthenticationRequest;
 import com.portal.demo.auth.AuthenticationResponse;
 import com.portal.demo.config.JwtService;
 import com.portal.demo.dto.UserRequest;
@@ -10,6 +11,7 @@ import com.portal.demo.repository.UserRepository;
 import com.portal.demo.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -42,15 +44,34 @@ public class UserServiceImpl implements UserService {
      userRepository.save(user);
      System.out.println(String
              .format("User %s is saved", user.getUsername()));
+
      var jwtToken = jwtService.generateToken(user);
      return AuthenticationResponse.builder()
              .token(jwtToken)
              .build();
     }
+    @Override
+    public AuthenticationResponse authenticate(AuthenticationRequest authenticationRequest){
+        authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(
+                        authenticationRequest.getUsername(),
+                        authenticationRequest.getPassword()
+                )
+        );
+        var user = userRepository.findByUsername(authenticationRequest.getUsername()).orElseThrow();
+
+      //  System.out.println(String
+      //          .format("User %s is authenticated", user.getUsername()));
+
+        var jwtToken = jwtService.generateToken(user);
+        return AuthenticationResponse.builder()
+                .token(jwtToken)
+                .build();
+    }
 
     @Override
     public UserResponse getUserByUsername(String username) {
-       return mapToUserResponse(userRepository.findByUsername(username));
+       return mapToUserResponse(userRepository.findByUsername(username).orElseThrow());
     }
 
     @Override

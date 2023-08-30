@@ -1,15 +1,14 @@
 package com.portal.demo.auth;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
 public class AuthenticationRequest {
-    String username;
+    private String username;
     String password;
 }

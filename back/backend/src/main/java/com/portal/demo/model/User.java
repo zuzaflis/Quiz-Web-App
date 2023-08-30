@@ -10,10 +10,9 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
-@Setter
 @Builder
 @Entity
 @Table(name = "users")
@@ -46,6 +45,16 @@ public class User implements UserDetails {
         return set;
 
     }
+    @Override
+    public String getPassword() {
+        return password;
+    }
+
+    @Override
+    public String getUsername() {
+        return username;
+    }
+
     @Override
     public boolean isAccountNonExpired() {
         return true;
