@@ -7,15 +7,23 @@
                 </div>
                 <h3 class="text-center">Sign in</h3>
               
-                <form (ngSubmit) = "formSubmit()">
+                <form 
+                *ngIf="!isLoggedIn"
+                name = "form"
+                (ngSubmit) = "f.form.valid && onSubmit()"
+                #f = "ngForm"
+                novalidate
+                >
                        <!--Username-->
                         <mat-form-field class = "full-width">
                           <mat-label>Username</mat-label>
                           <input 
-                          required
-                          [(ngModel)] = "user.username"
+                          [(ngModel)] = "form.username"
                           name = "username"
-                          matInput placeholder="Enter here">
+                          required
+                          #username ="ngModel"
+                          
+                          matInput placeholder="Enter here"/>
                           <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
                         </mat-form-field>
 
@@ -25,9 +33,11 @@
                             <input 
                             required
                             type="password"
-                            [(ngModel)] = "user.password"
+                            [(ngModel)] = "form.password"
                             name = "password"
-                             matInput placeholder="Enter here">
+                            #password="ngModel"
+                        
+                             matInput placeholder="Enter here"/>
                             <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
                           </mat-form-field>
                        
