@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { UserService } from 'src/app/_services/user.service';
+import { AuthService } from 'src/app/_services/auth.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -8,10 +8,8 @@ import Swal from 'sweetalert2';
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css']
 })
-export class SignupComponent {
-    constructor(private userService: UserService, private snackBar: MatSnackBar) {}
-
-  public user = {
+export class SignupComponent implements OnInit{
+  user = {
     username: '',
     password: '',
     firstName: '',
@@ -19,28 +17,32 @@ export class SignupComponent {
     email: '',
     phone: ''
   };
+  isSuccessful = false;
+  isSignUpFailed = false;
+  errorMessage =  ``;
 
-  formSubmit(){
-    console.log(this.user);
-      if(this.user.username == '' || this.user.username == null){
-        this.snackBar.open("Username is required." , "",{
-          duration: 3000
-        })
-        return;
-      }
-    
-      this.userService.addUser(this.user).subscribe(
-        (data) => {
-          //success
-          Swal.fire("Good job!", "You are registered!", "success");
-        },
-        (error) =>{
-          console.log(error)
-          this.snackBar.open("Something went wrong." , "",{
-            duration: 3000
-          })
-        }
-      )
+  constructor(private authService: AuthService, private snackBar: MatSnackBar) {}
+
+  ngOnInit(): void {
+      
   }
 
+  onSubmit(): void {
+
+    this.authService.register(this.user).subscribe({
+      next: data => {
+        console.log(data);
+        this.isSuccessful = true;
+        this.isSignUpFailed = false;
+        Swal.fire("Good job!", "You are registered!", "success");
+      },
+      error: err => {
+        this.errorMessage = err.error.message;
+        this.isSignUpFailed = true;
+        this.snackBar.open("Something went wrong." , "",{
+                  duration: 3000
+                 })
+      }
+    });
+  }
 }

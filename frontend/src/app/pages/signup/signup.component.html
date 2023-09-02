@@ -7,15 +7,27 @@
                 </div>
                 <h3 class="text-center">Register</h3>
               
-                <form (ngSubmit) = "formSubmit()">
+                <form 
+                *ngIf = "!isSuccessful"
+                #f="ngForm"
+                (ngSubmit) = "f.form.valid && onSubmit()">
+
                        <!--Username-->
                         <mat-form-field class = "full-width">
                           <mat-label>Username</mat-label>
                           <input 
-                          required
-                          [(ngModel)] = "user.username"
                           name = "username"
+                          [(ngModel)] = "user.username"
+                          required
+                          minlength="3"
+                          maxlength="20"
+                          #username = "ngModel"
+                          [ngClass] = "{'is-invalid' : f.submitted && username.errors}"
                           matInput placeholder="Enter here">
+                          <div class ="invalid-feedback" *ngIf = " username.errors && f.submitted">
+                            <div *ngIf = "username.errors['required']">Username is required</div>
+                              <div *ngIf = "username.errors['minlength']"> Username must be at least 3 characters</div>
+                          </div>
                           <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
                         </mat-form-field>
 
@@ -81,6 +93,7 @@
                     </div>
 
                 </form>
+          
             </div>
 		</div>
 	</div>
