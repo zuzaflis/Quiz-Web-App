@@ -8,8 +8,12 @@ import { AuthService } from 'src/app/_services/auth.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
-  constructor(private storageService: StorageService, private authService: AuthService){}
+  constructor(public storageService: StorageService, private authService: AuthService){}
+  currentUser: any;
 
+  profile(): void {
+    this.currentUser = this.storageService.getUser();
+  }
   logout(): void {
     this.storageService.clean();
     window.location.reload();

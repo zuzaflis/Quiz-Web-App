@@ -2,6 +2,7 @@ package com.portal.demo.auth;
 
 
 import com.portal.demo.config.JwtService;
+import com.portal.demo.model.Role;
 import com.portal.demo.model.User;
 import com.portal.demo.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -35,7 +36,7 @@ public class AuthenticationService {
                 .email(registerRequest.getEmail())
                 .phone(registerRequest.getPhone())
                 .profile(registerRequest.getProfile())
-                .role(registerRequest.getRole())
+                .role((registerRequest.getRole()==null)? Role.USER : registerRequest.getRole() )
                 .build();
         userRepository.save(user);
         System.out.println(String

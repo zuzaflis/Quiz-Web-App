@@ -41,7 +41,7 @@ onSubmit(): void{
       this.authService.getCurrentUser(data.token).subscribe({
         next: (user: any) => {
           this.storageService.saveUser(user);
-          console.log(user);
+          console.log(user.phone);
   
           this.isLoginFailed = false;
           this.isLoggedIn = true;
