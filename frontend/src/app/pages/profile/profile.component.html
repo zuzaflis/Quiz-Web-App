@@ -8,12 +8,8 @@
     <strong>Username:</strong>
     {{ currentUser.username }}
   </p>
-  <strong>Roles:</strong>
-  <ul>
-    <li *ngFor="let role of currentUser.roles">
-      {{ role }}
-    </li>
-  </ul>
+  <strong>Role:</strong>
+{{currentUser.role}}
 </div>
 
 <ng-template #loggedOut>

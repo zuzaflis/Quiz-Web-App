@@ -17,14 +17,14 @@ export class LoginComponent implements OnInit{
   isLoggedIn = false;
   isLoginFailed = false;
   errorMessage = '';
-  roles: string [] = [];
+  role ='';
   
   constructor(private authService: AuthService, private snackBar: MatSnackBar, private storageService: StorageService) {}
 
 ngOnInit(): void {
   if(this.storageService.isLoggedIn()){
     this.isLoggedIn = true;
-    //this.roles = this.storageService.getUser().roles;
+    this.role = this.storageService.getUser().role;
   }
 }
 onSubmit(): void{
@@ -45,8 +45,14 @@ onSubmit(): void{
   
           this.isLoginFailed = false;
           this.isLoggedIn = true;
-          this.roles = user.roles;
-          this.reloadPage();
+          this.role = user.role;
+
+          if(this.role == 'ADMIN'){
+              window.location.href = '/admin-board'
+          }else if(this.role == 'USER'){
+            window.location.href = '/user-board'
+          }
+          //this.reloadPage();
         },
         error: (err) => {
           this.errorMessage = err.error.message;

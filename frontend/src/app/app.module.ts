@@ -22,6 +22,9 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import { httpInterceptorProviders } from './_helpers/http.iterceptor';
 import { AdminBoardComponent } from './pages/admin-board/admin-board.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { UserDashboardComponent } from './pages/user-dashboard/user-dashboard.component';
+import { AdminGuard } from './_services/admin.guard';
+import { LoginGuard } from './_services/login.guard';
 
 @NgModule({
   declarations: [
@@ -33,6 +36,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
     HomeComponent,
     AdminBoardComponent,
     ProfileComponent,
+    UserDashboardComponent,
 ],
   imports: [
     BrowserModule,
@@ -51,7 +55,11 @@ import { ProfileComponent } from './pages/profile/profile.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [httpInterceptorProviders],
+  providers: [
+    httpInterceptorProviders,
+  AdminGuard,
+  LoginGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
