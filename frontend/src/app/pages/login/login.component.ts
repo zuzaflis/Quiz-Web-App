@@ -35,10 +35,10 @@ onSubmit(): void{
       console.log("success")
  
       this.storageService.saveUser(data);
-      console.log(data);
+      console.log(data.token);
   
    
-      this.authService.getCurrentUser().subscribe({
+      this.authService.getCurrentUser(data.token).subscribe({
         next: (user: any) => {
           this.storageService.saveUser(user);
           console.log(user);
