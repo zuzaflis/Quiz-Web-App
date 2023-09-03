@@ -4,7 +4,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
+
 
 
 @RestController
@@ -29,6 +31,11 @@ public class AuthenticationController {
         logger.info("Received authentication request for username: {}", authRequest.getUsername());
 
         return ResponseEntity.ok(authenticationService.authenticate(authRequest));
+    }
+
+    @GetMapping("/current-user")
+    public Object getCurrentUser(Authentication authentication) {
+        return authentication.getPrincipal();
     }
 
 }

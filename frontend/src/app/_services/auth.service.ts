@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { StorageService } from './storage.service';
 
 const AUTH_API = 'http://localhost:8080/api/v1/auth/';
 
@@ -23,7 +24,17 @@ const httpOptions = {
 })
 export class AuthService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private storageService: StorageService) { }
+
+  getCurrentUser(){
+    const token = this.storageService.getToken();
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${token}`
+      })
+    };
+    return this.http.get(AUTH_API+`current-user`,httpOptions);
+  }
 
   login(username: string, password: string): Observable<any>{
     return this.http.post(

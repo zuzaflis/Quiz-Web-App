@@ -20,6 +20,8 @@ import {MatCardModule} from '@angular/material/card';
 import {MatTableModule} from '@angular/material/table';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { httpInterceptorProviders } from './_helpers/http.iterceptor';
+import { AdminBoardComponent } from './pages/admin-board/admin-board.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,8 @@ import { httpInterceptorProviders } from './_helpers/http.iterceptor';
     SignupComponent,
     LoginComponent,
     HomeComponent,
+    AdminBoardComponent,
+    ProfileComponent,
 ],
   imports: [
     BrowserModule,
