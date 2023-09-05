@@ -20,11 +20,13 @@ import {MatCardModule} from '@angular/material/card';
 import {MatTableModule} from '@angular/material/table';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { httpInterceptorProviders } from './_helpers/http.iterceptor';
-import { AdminBoardComponent } from './pages/admin-board/admin-board.component';
+import { AdminBoardComponent } from './pages/admin/admin-board/admin-board.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { UserDashboardComponent } from './pages/user-dashboard/user-dashboard.component';
 import { AdminGuard } from './_services/admin.guard';
 import { LoginGuard } from './_services/login.guard';
+import {MatListModule} from '@angular/material/list';
+import { SidebarComponent } from './pages/sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +39,7 @@ import { LoginGuard } from './_services/login.guard';
     AdminBoardComponent,
     ProfileComponent,
     UserDashboardComponent,
+    SidebarComponent,
 ],
   imports: [
     BrowserModule,
@@ -53,7 +56,8 @@ import { LoginGuard } from './_services/login.guard';
     MatTableModule,
     MatToolbarModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatListModule
   ],
   providers: [
     httpInterceptorProviders,

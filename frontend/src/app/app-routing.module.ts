@@ -4,7 +4,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { ProfileComponent } from './pages/profile/profile.component';
-import { AdminBoardComponent } from './pages/admin-board/admin-board.component';
+import { AdminBoardComponent } from './pages/admin/admin-board/admin-board.component';
 import { UserDashboardComponent } from './pages/user-dashboard/user-dashboard.component';
 import { AdminGuard } from './_services/admin.guard';
 import { LoginGuard } from './_services/login.guard';
@@ -28,9 +28,15 @@ const routes: Routes = [
   { path: 'profile', 
   component: ProfileComponent 
 },
-{ path: 'admin-board', 
+{ path: 'admin', 
 component: AdminBoardComponent,
-canActivate: [AdminGuard]
+canActivate: [AdminGuard] ,
+children:[
+  {
+    path: 'profile',
+    component: ProfileComponent
+  }
+]
 },
 { path: 'user-board', 
 component: UserDashboardComponent,

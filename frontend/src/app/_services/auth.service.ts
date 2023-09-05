@@ -27,7 +27,6 @@ export class AuthService {
   constructor(private http: HttpClient,private storageService: StorageService) { }
 
   getCurrentUser(token:any){
-    //const token = this.storageService.getToken();
     const httpOptions = {
       headers: new HttpHeaders({
         'Authorization': `Bearer ${token}`
