@@ -28,14 +28,20 @@ const routes: Routes = [
   { path: 'profile', 
   component: ProfileComponent 
 },
-{ path: 'admin', 
-component: AdminBoardComponent,
-canActivate: [AdminGuard] ,
-children:[
+{ 
+    path: 'admin', 
+    component: AdminBoardComponent,
+    canActivate: [AdminGuard] ,
+    children:[
   {
     path: 'profile',
     component: ProfileComponent
-  }
+  },
+  {
+    path: 'board',
+    component: AdminBoardComponent
+  },
+
 ]
 },
 { path: 'user-board', 
