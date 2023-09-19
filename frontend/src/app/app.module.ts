@@ -26,7 +26,9 @@ import { UserDashboardComponent } from './pages/user-dashboard/user-dashboard.co
 import { AdminGuard } from './_services/admin.guard';
 import { LoginGuard } from './_services/login.guard';
 import {MatListModule} from '@angular/material/list';
-import { SidebarComponent } from './pages/sidebar/sidebar.component';
+import { SidebarComponent } from './pages/admin/sidebar/sidebar.component';
+import { ViewCategoriesComponent } from './pages/admin/view-categories/view-categories.component';
+import { AddCategoryComponent } from './pages/admin/add-category/add-category.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +42,8 @@ import { SidebarComponent } from './pages/sidebar/sidebar.component';
     ProfileComponent,
     UserDashboardComponent,
     SidebarComponent,
+    ViewCategoriesComponent,
+    AddCategoryComponent,
 ],
   imports: [
     BrowserModule,

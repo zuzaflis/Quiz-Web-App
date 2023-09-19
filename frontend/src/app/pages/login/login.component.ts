@@ -48,9 +48,9 @@ onSubmit(): void{
           this.role = user.role;
 
           if(this.role == 'ADMIN'){
-              window.location.href = '/admin-board'
+              window.location.href = '/admin'
           }else if(this.role == 'USER'){
-            window.location.href = '/user-board'
+            window.location.href = '/'
           }
           //this.reloadPage();
         },

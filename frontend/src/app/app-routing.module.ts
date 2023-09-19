@@ -8,6 +8,8 @@ import { AdminBoardComponent } from './pages/admin/admin-board/admin-board.compo
 import { UserDashboardComponent } from './pages/user-dashboard/user-dashboard.component';
 import { AdminGuard } from './_services/admin.guard';
 import { LoginGuard } from './_services/login.guard';
+import { ViewCategoriesComponent } from './pages/admin/view-categories/view-categories.component';
+import { AddCategoryComponent } from './pages/admin/add-category/add-category.component';
 
 const routes: Routes = [
   {
@@ -38,8 +40,12 @@ const routes: Routes = [
     component: ProfileComponent
   },
   {
-    path: 'board',
-    component: AdminBoardComponent
+    path: 'categories',
+    component: ViewCategoriesComponent
+  },
+  {
+    path: 'add-category',
+    component: AddCategoryComponent
   },
 
 ]
