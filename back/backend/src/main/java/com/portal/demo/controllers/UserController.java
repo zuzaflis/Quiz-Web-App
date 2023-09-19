@@ -1,4 +1,4 @@
-package com.portal.demo.demo;
+package com.portal.demo.controllers;
 
 import com.portal.demo.model.User;
 import com.portal.demo.services.UserService;

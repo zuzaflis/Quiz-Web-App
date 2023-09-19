@@ -1,4 +1,4 @@
-package com.portal.demo.demo;
+package com.portal.demo.controllers;
 
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
