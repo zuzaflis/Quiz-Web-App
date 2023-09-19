@@ -6,7 +6,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Service
@@ -15,7 +14,7 @@ public class QuizService {
     private final QuizRepository quizRepository;
 
     public Quiz addQuiz(Quiz quiz){
-        return  this.quizRepository.save(quiz);
+        return this.quizRepository.save(quiz);
     }
     public Quiz updateQuiz(Quiz quiz){
         return this.quizRepository.save(quiz);

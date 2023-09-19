@@ -25,7 +25,7 @@ public class Quiz {
     private String maxMarks;
     private String numberOfQuestions;
     private boolean active = false;
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Category category;
 
     @OneToMany(mappedBy = "quiz", fetch= FetchType.LAZY,cascade = CascadeType.ALL)
