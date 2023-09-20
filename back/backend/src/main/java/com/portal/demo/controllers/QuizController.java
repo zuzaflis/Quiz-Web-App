@@ -1,12 +1,12 @@
 package com.portal.demo.controllers;
 
+import com.portal.demo.dto.QuizRequest;
 import com.portal.demo.model.exam.Quiz;
 import com.portal.demo.services.QuizService;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Set;
 
 @RestController
 @RequestMapping("/quiz")
@@ -14,10 +14,11 @@ import java.util.Set;
 @CrossOrigin(origins = "http://localhost:4200", allowedHeaders = "*", allowCredentials = "true")
 public class QuizController {
     private final QuizService quizService;
-
+    @Transactional
     @PostMapping("/")
-    public ResponseEntity<Quiz> add(@RequestBody Quiz quiz){
-        return ResponseEntity.ok(this.quizService.addQuiz(quiz));
+    public ResponseEntity<Quiz> add(@RequestBody QuizRequest quizRequest){
+
+        return ResponseEntity.ok(this.quizService.addQuiz(quizRequest));
     }
 
     @PutMapping("/")
