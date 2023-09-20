@@ -1,0 +1,19 @@
+.example-card {
+    width: 500px;
+    margin-bottom: 8px;
+    display: flex; 
+    justify-content: space-between;
+  }
+  .example-header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+  }
+  .button-card{
+    display: flex; 
+    justify-content: space-between;
+  }
+  .quiz-card{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }

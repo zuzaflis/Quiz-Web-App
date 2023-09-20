@@ -29,7 +29,10 @@ import {MatListModule} from '@angular/material/list';
 import { SidebarComponent } from './pages/admin/sidebar/sidebar.component';
 import { ViewCategoriesComponent } from './pages/admin/view-categories/view-categories.component';
 import { AddCategoryComponent } from './pages/admin/add-category/add-category.component';
+import { ViewQuizzesComponent } from './pages/admin/view-quizzes/view-quizzes.component';
+import { AddQuizzComponent } from './pages/admin/add-quizz/add-quizz.component';
 
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,6 +47,8 @@ import { AddCategoryComponent } from './pages/admin/add-category/add-category.co
     SidebarComponent,
     ViewCategoriesComponent,
     AddCategoryComponent,
+    ViewQuizzesComponent,
+    AddQuizzComponent,
 ],
   imports: [
     BrowserModule,
@@ -61,13 +66,15 @@ import { AddCategoryComponent } from './pages/admin/add-category/add-category.co
     MatToolbarModule,
     FormsModule,
     HttpClientModule,
-    MatListModule
+    MatListModule,
+
   ],
   providers: [
     httpInterceptorProviders,
   AdminGuard,
   LoginGuard
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas:[CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule { }
