@@ -13,4 +13,5 @@ public class QuizRequest {
     private String description;
     private String maxMarks;
     private String numberOfQuestions;
+    private boolean active;
 }

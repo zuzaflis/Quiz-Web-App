@@ -17,7 +17,6 @@ public class QuizController {
     @Transactional
     @PostMapping("/")
     public ResponseEntity<Quiz> add(@RequestBody QuizRequest quizRequest){
-
         return ResponseEntity.ok(this.quizService.addQuiz(quizRequest));
     }
 

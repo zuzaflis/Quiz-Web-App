@@ -25,7 +25,7 @@ public class QuizService {
     private EntityManager entityManager;
     @Transactional
     public Quiz addQuiz(QuizRequest quizRequest) {
-        Long catId = quizRequest.getCategoryId();
+        Long catId = Long.valueOf(quizRequest.getCategoryId());
         Optional<Category> optionalCat = this.categoryRepository.findById(catId);
 
         if (optionalCat.isPresent()) {
