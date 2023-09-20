@@ -1,1 +1,79 @@
-<p>add-quizz works!</p>
+<mat-card>
+    <h1 class=" ml20 mt20">Add new quiz</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+
+
+
+            <form>
+
+                <mat-form-field class="w100 mt20" appearance="fill">
+                    <mat-label>Title</mat-label>
+                    <input 
+                    required
+                    type="text"
+                     name ="title" 
+                     placeholder="Enter here" 
+                     matInput
+                     ></mat-form-field>
+
+                <mat-form-field class="w100 mt20" appearance="fill">
+                    <mat-label>Description</mat-label>
+                    <textarea 
+                    type="text" 
+                    name ="description" 
+                    placeholder="Enter here"
+                     matInput
+                     rows="5"
+                     ></textarea>
+                </mat-form-field>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <mat-form-field class="w100 mt20" appearance="fill">
+                            <mat-label>Max Marks</mat-label>
+                            <input 
+                            required
+                            type="text"
+                             name ="maxMarks" 
+                             placeholder="Enter here"
+                              matInput>
+                        </mat-form-field>
+
+                    </div>
+                    <div class="col-md-6">
+                        <mat-form-field class="w100 mt20" appearance="fill">
+                            <mat-label>Number of Questions</mat-label>
+                            <input 
+                            required
+                            type="text" 
+                            name ="numberOfQuestions" 
+                            placeholder="Enter here"
+                             matInput>
+                        </mat-form-field>
+
+                    </div>
+                </div>
+
+                <mat-form-field class =" w100">
+                    <mat-label>Category</mat-label>
+                    <mat-select name="category">
+                      <mat-option *ngFor="let c of categories" [value]="c.cId">
+                        {{c.title}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <mat-slide-toggle class="mt20 mb20 mr20" [checked]="false"> Make it active</mat-slide-toggle>
+
+
+                  <div class="container text-center">
+                    <button class="mb20" mat-raised-button color="accent">Add</button>
+                  </div>
+            </form>
+
+
+            </div>
+        </div>
+    </div>
+</mat-card>

@@ -31,6 +31,8 @@ import { ViewCategoriesComponent } from './pages/admin/view-categories/view-cate
 import { AddCategoryComponent } from './pages/admin/add-category/add-category.component';
 import { ViewQuizzesComponent } from './pages/admin/view-quizzes/view-quizzes.component';
 import { AddQuizzComponent } from './pages/admin/add-quizz/add-quizz.component';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatSelectModule} from '@angular/material/select';
 
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 @NgModule({
@@ -67,6 +69,8 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
     FormsModule,
     HttpClientModule,
     MatListModule,
+    MatSlideToggleModule,
+    MatSelectModule
 
   ],
   providers: [

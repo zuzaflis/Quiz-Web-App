@@ -38,7 +38,7 @@ public class QuizService {
             quiz.setDescription(quizRequest.getDescription());
             quiz.setMaxMarks(quizRequest.getMaxMarks());
             quiz.setNumberOfQuestions(quizRequest.getNumberOfQuestions());
-            
+
             return this.quizRepository.save(quiz);
         }else {
             throw new EntityNotFoundException("Category not found!");
