@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CategoryService } from 'src/app/_services/category.service';
 import { QuizService } from 'src/app/_services/quiz.service';
 import Swal from 'sweetalert2';
@@ -19,7 +20,11 @@ interface Category {
 export class AddQuizzComponent implements OnInit {
 
 
-constructor(private _categoriesService: CategoryService, private _quizService: QuizService) {}
+constructor(
+  private _categoriesService: CategoryService,
+   private _quizService: QuizService,
+   private _router: Router
+   ) {}
     categories: Category[]=[];
 
     quizData={
@@ -44,7 +49,9 @@ constructor(private _categoriesService: CategoryService, private _quizService: Q
 
   formSubmit(){
     this._quizService.addQuiz(this.quizData).subscribe((data:any)=>{
-      Swal.fire("Success!","Quiz is added!","success");
+      Swal.fire("Success!","Quiz is added!","success").then((e)=>{
+        this._router.navigate(['/admin/quizzes']);
+      });
     },(error:any)=>{
       console.log(error);
       Swal.fire("Error!", "Something went wrong","error");
