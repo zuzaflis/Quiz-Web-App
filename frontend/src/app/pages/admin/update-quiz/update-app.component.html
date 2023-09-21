@@ -60,9 +60,9 @@
 
                 <mat-form-field class =" w100">
                     <mat-label>Category</mat-label>
-                    <mat-select name="category" [(ngModel)]="quiz.category.cid">
+                    <mat-select name="category" [(ngModel)]="quiz.category">
                       <mat-option
-                       *ngFor="let c of categories" [value]="c.cid">
+                       *ngFor="let c of categories" [value]="c">
                         {{c.title}}
                       </mat-option>
                     </mat-select>
