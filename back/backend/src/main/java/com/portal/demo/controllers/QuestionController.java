@@ -33,6 +33,7 @@ public class QuestionController {
     public ResponseEntity<?> getQuestions(){
         return ResponseEntity.ok(this.questionService.getQuestions());
     }
+
     //get questions from quiz
     @GetMapping("/quiz/{Id}")
     public ResponseEntity<?> getQuestionsFromQuiz(@PathVariable("Id") Long id){

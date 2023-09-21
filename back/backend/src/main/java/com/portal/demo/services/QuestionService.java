@@ -14,7 +14,9 @@ import java.util.Set;
 public class QuestionService {
     private final QuestionRepository questionRepository;
     public Question addQuestion(Question question){
-    return this.questionRepository.save(question);
+    question.getQuesId();
+
+        return this.questionRepository.save(question);
     }
     public Question updateQuestion (Question question){
         return this.questionRepository.save(question);
