@@ -10,7 +10,18 @@ import { QuestionService } from 'src/app/_services/question.service';
 export class ViewQuizQuestionsComponent implements OnInit{
 qId:any;
 qTitle: any;
-questions = [];
+questions = [
+  {
+     content: '',
+    image: '',
+    option1: '',
+    option2: '',
+    option3: '',
+    option4: '',
+    answer: '',
+    quiz: {}
+  }
+];
 
   constructor(
     private _route: ActivatedRoute,
@@ -24,6 +35,7 @@ questions = [];
 
     this._queService.getQuestionsOfQuiz(this.qId).subscribe((data:any)=>{
       this.questions = data;
+      console.log(this.questions)
     },(error)=>{
       console.log(error);
     })

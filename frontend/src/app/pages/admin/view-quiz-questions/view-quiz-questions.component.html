@@ -1,1 +1,44 @@
 <h1>Questions of quiz: {{qTitle}}</h1>
+<mat-card>
+    <div class=" button card div center-text mt20 ml20 mb20 mr20 ">
+        <button mat-raised-button >Search </button>
+        <button routerLink = "/admin/add-quiz" class="ml20 mr20 " mat-raised-button >Add new Quiz</button>       
+    </div>
+</mat-card>
+
+<div class="div quiz-card" *ngIf="questions">
+<mat-card class ="mt20 example-card"  *ngFor="let q of questions" >
+<mat-card-header>
+
+    <mat-card-title-group>
+        <div mat-card-avatar class="example-header-image" ></div>
+            <mat-card-title>{{q.content}}</mat-card-title> 
+    </mat-card-title-group>
+
+</mat-card-header>
+
+<mat-card-content>
+    <p>Answer: {{q.answer}}</p>
+    <ol>
+        <li>{{ q.option1 }}</li>
+        <li>{{ q.option2 }}</li>
+        <li>{{ q.option3 }}</li>
+        <li>{{ q.option4 }}</li>
+      </ol>
+</mat-card-content>
+<mat-card-action>
+
+    <button 
+    [routerLink]=""
+    class="mt10 mb20 ml20" 
+    mat-flat-button 
+    color="primary">
+        Update
+    </button>
+
+    <button class="mt10 mb20 ml20" mat-flat-button color="warn"  >
+        Delete
+    </button>
+</mat-card-action>
+</mat-card>
+</div>
