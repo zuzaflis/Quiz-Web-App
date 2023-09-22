@@ -5,6 +5,7 @@ import com.portal.demo.model.exam.Question;
 import com.portal.demo.model.exam.Quiz;
 import com.portal.demo.services.QuestionService;
 import com.portal.demo.services.QuizService;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -30,6 +31,7 @@ public class QuestionController {
         return ResponseEntity.ok(this.questionService.updateQuestion(question));
     }
 //get all questions
+
     @GetMapping("/")
     public ResponseEntity<?> getQuestions(){
         return ResponseEntity.ok(this.questionService.getQuestions());

@@ -8,6 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 @Data
@@ -31,4 +32,10 @@ public class Quiz {
     @OneToMany(mappedBy = "quiz", fetch= FetchType.EAGER,cascade = CascadeType.ALL)
     @JsonIgnore
     private Set<Question> questions = new HashSet<>();
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(qId, title, description, maxMarks, numberOfQuestions, active);
+    }
+
 }

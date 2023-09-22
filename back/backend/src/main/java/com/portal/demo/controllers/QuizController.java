@@ -25,6 +25,7 @@ public class QuizController {
         return ResponseEntity.ok(this.quizService.updateQuiz(quiz));
     }
 
+    @Transactional
     @GetMapping("/")
     public ResponseEntity<?> getQuizzes(){
         return ResponseEntity.ok(this.quizService.getQuizzes());

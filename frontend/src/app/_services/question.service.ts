@@ -10,6 +10,9 @@ export class QuestionService {
 
 public getQuestionsOfQuiz(qid:any){
   return this._http.get(`http://localhost:8080/question/quiz/${qid}`);
+}
 
+public addQuestion(question: any){
+  return this._http.post(`http://localhost:8080/question/}`, question);
 }
 }

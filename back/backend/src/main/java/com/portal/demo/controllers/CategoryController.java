@@ -2,6 +2,7 @@ package com.portal.demo.controllers;
 
 import com.portal.demo.model.exam.Category;
 import com.portal.demo.services.CategoryService;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -23,11 +24,13 @@ public class CategoryController {
         return ResponseEntity.ok(cat1);
     }
     //getCategory
+    @Transactional
     @GetMapping("/{categoryId}")
     public Category getCategory(@PathVariable("categoryId") Long categoryId){
         return this.categoryService.getCategory(categoryId);
     }
     //get all categories
+    @Transactional
     @GetMapping("/")
     public ResponseEntity<?> getCategories(){
         return ResponseEntity.ok(this.categoryService.getCategories());
