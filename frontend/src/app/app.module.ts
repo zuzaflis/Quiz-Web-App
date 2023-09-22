@@ -37,6 +37,7 @@ import {MatSelectModule} from '@angular/material/select';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { UpdateAppComponent } from './pages/admin/update-quiz/update-app.component';
 import { ViewQuizQuestionsComponent } from './pages/admin/view-quiz-questions/view-quiz-questions.component';
+import { AddQuestionComponent } from './pages/admin/add-question/add-question.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,6 +56,7 @@ import { ViewQuizQuestionsComponent } from './pages/admin/view-quiz-questions/vi
     AddQuizzComponent,
     UpdateAppComponent,
     ViewQuizQuestionsComponent,
+    AddQuestionComponent,
 ],
   imports: [
     BrowserModule,
