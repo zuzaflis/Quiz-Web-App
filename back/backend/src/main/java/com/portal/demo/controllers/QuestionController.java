@@ -1,5 +1,6 @@
 package com.portal.demo.controllers;
 
+import com.portal.demo.dto.QuestionRequest;
 import com.portal.demo.model.exam.Question;
 import com.portal.demo.model.exam.Quiz;
 import com.portal.demo.services.QuestionService;
@@ -20,8 +21,8 @@ public class QuestionController {
 
     //add
     @PostMapping("/")
-    public ResponseEntity<Question> add(@RequestBody Question question){
-        return ResponseEntity.ok(this.questionService.addQuestion(question));
+    public ResponseEntity<Question> add(@RequestBody QuestionRequest questionRequest){
+        return ResponseEntity.ok(this.questionService.addQuestion(questionRequest));
     }
 //update
     @PutMapping("/")
