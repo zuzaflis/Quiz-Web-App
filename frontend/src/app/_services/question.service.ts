@@ -13,6 +13,6 @@ public getQuestionsOfQuiz(qid:any){
 }
 
 public addQuestion(question: any){
-  return this._http.post(`http://localhost:8080/question/}`, question);
+  return this._http.post(`http://localhost:8080/question/`, question);
 }
 }
