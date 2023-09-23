@@ -15,4 +15,8 @@ public getQuestionsOfQuiz(qid:any){
 public addQuestion(question: any){
   return this._http.post(`http://localhost:8080/question/`, question);
 }
+
+public deleteQuestion(questionId: any){
+  return this._http.delete(`http://localhost:8080/question/${questionId}`)
+}
 }

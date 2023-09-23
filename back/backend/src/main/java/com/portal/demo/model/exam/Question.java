@@ -25,6 +25,6 @@ public class Question {
     private String option4;
     private String answer;
 
-    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER)
     private Quiz quiz;
 }

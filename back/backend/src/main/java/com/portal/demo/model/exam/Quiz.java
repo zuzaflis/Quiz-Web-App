@@ -26,10 +26,10 @@ public class Quiz {
     private String maxMarks;
     private String numberOfQuestions;
     private boolean active = false;
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER)
     private Category category;
 
-    @OneToMany(mappedBy = "quiz", fetch= FetchType.EAGER,cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "quiz", fetch= FetchType.EAGER,cascade = CascadeType.REMOVE)
     @JsonIgnore
     private Set<Question> questions = new HashSet<>();
 

@@ -23,7 +23,7 @@ public class Category {
     private Long cId;
     private String title;
     private String description;
-    @OneToMany(mappedBy = "category",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "category",fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     @JsonIgnore
     private Set<Quiz> quizzes = new LinkedHashSet<>();
     @Override

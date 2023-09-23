@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Optional;
-import java.util.Set;
+import java.util.Set;;
 
 @Service
 @RequiredArgsConstructor
@@ -58,8 +58,12 @@ public class QuestionService {
     public Set<Question> getQuestionOfQuiz(Quiz quiz){
         return this.questionRepository.findByQuiz(quiz);
     }
-    public void deleteQuestion(Long queId){
-        Question questionToDelete = this.questionRepository.getById(queId);
-        this.questionRepository.delete(questionToDelete);
+    @Transactional
+    public void deleteQuestion(Long quesId){
+        Question question = questionRepository.findById(quesId).orElse(null);
+        if(question!=null) {
+            this.questionRepository.delete(question);
+        }
     }
 }
+
