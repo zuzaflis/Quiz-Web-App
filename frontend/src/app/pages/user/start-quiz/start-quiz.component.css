@@ -1,3 +1,19 @@
-.container{
-    
-}
+
+.quiz-card {
+    width: 50%; 
+    margin: 0 auto; 
+    margin-top: 50px; 
+    margin-bottom: 50px;
+    padding: 20px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); 
+  }
+  .response-group {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .response-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px; /* Dodaj odstęp między rzędami odpowiedzi */
+  }

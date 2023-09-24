@@ -30,7 +30,7 @@ export class StartQuizComponent implements OnInit{
   userAnswer: any;
   isQuizCompleted: boolean = false;
   numberOfQuestions: any;
-  
+
   currentQue: number = 0;
   interval$: any;
   progress: string = '0';
@@ -104,6 +104,8 @@ export class StartQuizComponent implements OnInit{
 
     nextQuestion(){
       this.questions[this.currentQue++];
+      this.resetCounter();
+      this.getProgressPercent();
     }
   }
 

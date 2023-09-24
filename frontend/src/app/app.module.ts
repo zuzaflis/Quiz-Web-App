@@ -43,6 +43,7 @@ import { AllQuizzesComponent } from './pages/user/all-quizzes/all-quizzes.compon
 import {MatExpansionModule} from '@angular/material/expansion';
 import { QuizInstructionComponent } from './pages/user/quiz-instruction/quiz-instruction.component';
 import { StartQuizComponent } from './pages/user/start-quiz/start-quiz.component';
+import {MatRadioModule} from '@angular/material/radio';
 @NgModule({
   declarations: [
     AppComponent,
@@ -87,7 +88,8 @@ import { StartQuizComponent } from './pages/user/start-quiz/start-quiz.component
     MatSlideToggleModule,
     MatSelectModule,
     MatExpansionModule,
-    MatDividerModule
+    MatDividerModule,
+    MatRadioModule,
 
   ],
   providers: [

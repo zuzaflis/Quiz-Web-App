@@ -1,14 +1,41 @@
-<mat-card class="container">
+<div *ngIf="!isQuizCompleted">
+<mat-card class="info-card">
     <mat-card-header>
-        {{questions[currentQue].content}}
+      <h1>QUIZ NAZWA</h1>
     </mat-card-header>
     <mat-card-content>
-        <div class="question-remaining">
-            <span>Question {{currentQue + 1}} of {{numberOfQuestions}}</span>
-          </div>
-        <div class="timer">
-            <h5>{{counter}} sec ⌛</h5>
-          </div>
+      <div class="question-remaining">
+        <span>Question {{ currentQue + 1 }} of {{ numberOfQuestions }}</span>
+      </div>
+      <div class="timer">
+        <h5>{{ counter }} sec ⌛</h5>
+      </div>
+  
+    <div class="w-full bg-gray-200 rounded-full dark:bg-gray-150">
+      <div class="bg-blue-600 h-6 text-lg font-medium text-blue-100 text-center  p-0.5 leading-none rounded-full"
+        [ngStyle]="{'width': progress + '%' }"> {{progress}}%</div>
+    </div>
     </mat-card-content>
-</mat-card>
+  </mat-card>
+  
+  <mat-card class="quiz-card">
+    <mat-card-content>
+        <header class="text-center">
+            <h1>{{ questions[currentQue].content }}</h1>
+          
+        </header>
+        <br/>
+        <mat-divider></mat-divider>
+        <mat-radio-group class="response-group">
+            <div class="response-row" *ngFor="let option of [questions[currentQue].option1, questions[currentQue].option2,questions[currentQue].option3, questions[currentQue].option4]">
+              <mat-radio-button>{{ option }}</mat-radio-button>
+            </div>
+          </mat-radio-group>
 
+          <div class="button text-center">
+        <button mat-raised-button color="accent"(click)="nextQuestion()">Next</button>
+    </div>
+
+</mat-card-content>
+</mat-card>
+</div>
