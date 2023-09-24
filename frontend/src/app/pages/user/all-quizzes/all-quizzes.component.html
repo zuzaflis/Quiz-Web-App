@@ -22,5 +22,12 @@
         Start
     </button>
 </mat-card-action>
+
 </mat-card>
+<mat-card class ="mt20 example-card" *ngIf = "quizzes.length == 0">
+    <mat-card-content>
+        <h1>No Quizzes for this Category</h1>
+    </mat-card-content>
+    </mat-card>
 </div>
+{{quizzes | json}}

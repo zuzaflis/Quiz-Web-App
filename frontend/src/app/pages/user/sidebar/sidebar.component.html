@@ -1,36 +1,43 @@
 <mat-card>
     <mat-action-list>
-        <div mat-subheader><mat-icon>dashboard</mat-icon>
+        <div mat-subheader><mat-icon class="mr10">dashboard</mat-icon>
            Dashboard</div>
 
         <button 
         routerLink ="/user-board"
-        mat-list-item><mat-icon mat-list-icon>home</mat-icon>
+        mat-list-item><mat-icon mat-list-icon class="mr10">home</mat-icon>
         Home
         </button>
 
         <button 
         routerLink ="/profile"
-        mat-list-item><mat-icon mat-list-icon>account_circle</mat-icon>
+        mat-list-item><mat-icon mat-list-icon class="mr10">account_circle</mat-icon>
         Profile
         </button>
 
         <button 
-         routerLink ="/categories"
-        mat-list-item><mat-icon mat-list-icon>list</mat-icon>
-        Categories
-        </button>
-
-
-        <button 
         routerLink ="/user-board/0"
-        mat-list-item><mat-icon mat-list-icon>quiz</mat-icon>
+        mat-list-item><mat-icon mat-list-icon class="mr10">quiz</mat-icon>
          All Quizzes
         </button>
 
+        <mat-expansion-panel class="mat-expansion">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <mat-icon mat-list-icon class="mr20">list</mat-icon> Categories
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-action-list>
+              <button [routerLink]="'/user-board/'+c.cid" mat-list-item *ngFor="let c of categories">
+                {{ c.title }}
+              </button>
+            </mat-action-list>
+          </mat-expansion-panel>
+
+
         <button 
         (click)="logout()"
-        mat-list-item><mat-icon mat-list-icon>logout</mat-icon>
+        mat-list-item><mat-icon mat-list-icon class="mr10">logout</mat-icon>
         Logout
         </button>
 

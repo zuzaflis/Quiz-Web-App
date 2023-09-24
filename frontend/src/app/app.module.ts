@@ -40,6 +40,7 @@ import { UpdateAppComponent } from './pages/admin/update-quiz/update-app.compone
 import { ViewQuizQuestionsComponent } from './pages/admin/view-quiz-questions/view-quiz-questions.component';
 import { AddQuestionComponent } from './pages/admin/add-question/add-question.component';
 import { AllQuizzesComponent } from './pages/user/all-quizzes/all-quizzes.component';
+import {MatExpansionModule} from '@angular/material/expansion';
 @NgModule({
   declarations: [
     AppComponent,
@@ -80,7 +81,8 @@ import { AllQuizzesComponent } from './pages/user/all-quizzes/all-quizzes.compon
     HttpClientModule,
     MatListModule,
     MatSlideToggleModule,
-    MatSelectModule
+    MatSelectModule,
+    MatExpansionModule
 
   ],
   providers: [

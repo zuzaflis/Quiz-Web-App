@@ -11,7 +11,9 @@ export class QuizService {
   public getQuizzes(){
     return this._http.get(`http://localhost:8080/quiz/`)
   }
-
+  public getQuizzesOfCategory(cId:any){
+    return this._http.get(`http://localhost:8080/quiz/category/${cId}`)
+  }
 
   public addQuiz(quiz: any){
    return this._http.post(`http://localhost:8080/quiz/`, quiz)

@@ -31,21 +31,30 @@ export class AllQuizzesComponent implements OnInit{
   ) {}
 
   ngOnInit(): void {
-    this.catId = this._route.snapshot.params['catId'];
 
-    if(this.catId == 0){
-      //get all
-    this._quizService.getQuizzes().subscribe((data:any)=>{
-      this.quizzes = data;
-    },
-    (error)=>{
-      console.log(error);
-      Swal.fire("Error", "Error while fetching data!", 'error');
+
+    this._route.params.subscribe((params:any)=>{
+      this.catId = this._route.snapshot.params['catId'];
+      if(this.catId == 0){
+        //get all
+      this._quizService.getQuizzes().subscribe((data:any)=>{
+        this.quizzes = data;
+      },
+      (error)=>{
+        console.log(error);
+        Swal.fire("Error", "Error while fetching data!", 'error');
+      })
+    }else {
+      //get from chosen category
+      this._quizService.getQuizzesOfCategory(this.catId).subscribe((data:any)=>{
+        this.quizzes=data;
+      },
+      (error)=>{
+        console.log(error);
+        Swal.fire("Error", "Error while fetching data of this category!", 'error');
+      })
+    
+    }
     })
-  }else {
-    //get from chosen category
-
-  
-  }
 } 
 }

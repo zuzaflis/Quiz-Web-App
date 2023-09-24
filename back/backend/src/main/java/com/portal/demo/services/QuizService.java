@@ -13,6 +13,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -56,5 +57,15 @@ public class QuizService {
     public void deleteQuiz(Long quizId){
        Quiz quizToDelete =  quizRepository.findById(quizId).get();
        quizRepository.delete(quizToDelete);
+    }
+    public List<Quiz> getQuizzesOfCategory(Long cid){
+        Optional<Category> optCat = categoryRepository.findById(cid);
+        if(optCat.isPresent()){
+            Category cat = optCat.get();
+            return this.quizRepository.findByCategory(cat);
+        } else{
+            throw  new EntityNotFoundException("Category not found!");
+        }
+
     }
 }
