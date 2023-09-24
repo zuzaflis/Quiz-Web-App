@@ -1,1 +1,14 @@
-<p>start-quiz works!</p>
+<mat-card class="container">
+    <mat-card-header>
+        {{questions[currentQue].content}}
+    </mat-card-header>
+    <mat-card-content>
+        <div class="question-remaining">
+            <span>Question {{currentQue + 1}} of {{numberOfQuestions}}</span>
+          </div>
+        <div class="timer">
+            <h5>{{counter}} sec ⌛</h5>
+          </div>
+    </mat-card-content>
+</mat-card>
+
