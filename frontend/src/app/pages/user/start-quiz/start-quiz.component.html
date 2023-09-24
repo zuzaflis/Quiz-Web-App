@@ -1,8 +1,9 @@
 <div *ngIf="!isQuizCompleted">
 <mat-card class="info-card">
-    <mat-card-header>
-      <h1>QUIZ NAZWA</h1>
-    </mat-card-header>
+    <header class="text-center">
+        <h1>{{ quiz.title}}</h1>
+      
+    </header>
     <mat-card-content>
       <div class="question-remaining">
         <span>Question {{ currentQue + 1 }} of {{ numberOfQuestions }}</span>
@@ -11,10 +12,10 @@
         <h5>{{ counter }} sec ⌛</h5>
       </div>
   
-    <div class="w-full bg-gray-200 rounded-full dark:bg-gray-150">
-      <div class="bg-blue-600 h-6 text-lg font-medium text-blue-100 text-center  p-0.5 leading-none rounded-full"
-        [ngStyle]="{'width': progress + '%' }"> {{progress}}%</div>
-    </div>
+      <div class="progress-container">
+        <div class="progress-bar" [style.width.%]="progress">{{ progress }}%</div>
+      </div>
+      
     </mat-card-content>
   </mat-card>
   
@@ -33,7 +34,7 @@
           </mat-radio-group>
 
           <div class="button text-center">
-        <button mat-raised-button color="accent"(click)="nextQuestion()">Next</button>
+        <button mat-raised-button color="accent" (click)="nextQuestion()" [disabled]="currentQue === numberOfQuestions">Next</button>
     </div>
 
 </mat-card-content>

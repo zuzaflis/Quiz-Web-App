@@ -25,6 +25,9 @@ export class StartQuizComponent implements OnInit{
      
    },
   ];
+  quiz ={
+    title:'',
+  }
   points: number = 0;
   counter = 60;
   userAnswer: any;
@@ -48,6 +51,7 @@ export class StartQuizComponent implements OnInit{
     this.preventButtonBack();
     this.qId = this._route.snapshot.params['qid'];
     this.loadQuestions();
+    this.loadQuiz();
     this.startCounter();
   }
 
@@ -60,6 +64,12 @@ export class StartQuizComponent implements OnInit{
     },(error)=>{
       console.log(error);
     })
+  }
+  loadQuiz(){
+    this._quiz.getSingleQuiz(this.qId).subscribe((data:any)=>{
+      this.quiz = data;
+    })
+
   }
 
   preventButtonBack(){

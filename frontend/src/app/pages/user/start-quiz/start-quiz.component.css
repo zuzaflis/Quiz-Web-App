@@ -15,5 +15,25 @@
   .response-row {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 8px; /* Dodaj odstęp między rzędami odpowiedzi */
+    margin-bottom: 8px; 
+  }
+
+.progress-container {
+    width: 100%;
+    background-color: #ccc; 
+    border-radius: 9999px; 
+  }
+  
+
+  .progress-bar {
+    height: 1.5rem; 
+    text-align: center; 
+    line-height: 1.5rem; 
+    border-radius: 9999px; 
+    background-color: #4CAF50; 
+    color: white; 
+  }
+  
+  .progress-bar.ng-tns-c1-0 {
+    transition: width 0.3s ease;
   }
