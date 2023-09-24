@@ -22,11 +22,12 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import { httpInterceptorProviders } from './_helpers/http.iterceptor';
 import { AdminBoardComponent } from './pages/admin/admin-board/admin-board.component';
 import { ProfileComponent } from './pages/profile/profile.component';
-import { UserDashboardComponent } from './pages/user-dashboard/user-dashboard.component';
+import { UserDashboardComponent } from './pages/user/user-dashboard/user-dashboard.component';
 import { AdminGuard } from './_services/admin.guard';
 import { LoginGuard } from './_services/login.guard';
 import {MatListModule} from '@angular/material/list';
 import { SidebarComponent } from './pages/admin/sidebar/sidebar.component';
+import { SidebarComponent as UserSideBar} from './pages/user/sidebar/sidebar.component';
 import { ViewCategoriesComponent } from './pages/admin/view-categories/view-categories.component';
 import { AddCategoryComponent } from './pages/admin/add-category/add-category.component';
 import { ViewQuizzesComponent } from './pages/admin/view-quizzes/view-quizzes.component';
@@ -57,6 +58,7 @@ import { AddQuestionComponent } from './pages/admin/add-question/add-question.co
     UpdateAppComponent,
     ViewQuizQuestionsComponent,
     AddQuestionComponent,
+    UserSideBar,
 ],
   imports: [
     BrowserModule,

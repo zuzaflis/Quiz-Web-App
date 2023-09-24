@@ -10,6 +10,7 @@ import { StorageService } from 'src/app/_services/storage.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit{
+
   form: any = {
     username: null,
     password: null
@@ -19,7 +20,11 @@ export class LoginComponent implements OnInit{
   errorMessage = '';
   role ='';
   
-  constructor(private authService: AuthService, private snackBar: MatSnackBar, private storageService: StorageService) {}
+  constructor(
+    private authService: AuthService, 
+    private snackBar: MatSnackBar,
+     private storageService: StorageService
+     ) {}
 
 ngOnInit(): void {
   if(this.storageService.isLoggedIn()){
@@ -32,16 +37,12 @@ onSubmit(): void{
 
   this.authService.login(username, password).subscribe({
     next: (data: any) => {
-      console.log("success")
  
       this.storageService.saveUser(data);
-      console.log(data.token);
-  
-   
+    
       this.authService.getCurrentUser(data.token).subscribe({
         next: (user: any) => {
           this.storageService.saveUser(user);
-          console.log(user.phone);
   
           this.isLoginFailed = false;
           this.isLoggedIn = true;
@@ -50,7 +51,7 @@ onSubmit(): void{
           if(this.role == 'ADMIN'){
               window.location.href = '/admin'
           }else if(this.role == 'USER'){
-            window.location.href = '/'
+            window.location.href = '/user-board'
           }
           //this.reloadPage();
         },
