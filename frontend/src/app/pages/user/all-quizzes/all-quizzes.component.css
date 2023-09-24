@@ -1,0 +1,19 @@
+.example-card {
+    width: 500px;
+    margin-bottom: 8px;
+    display: flex; 
+    justify-content: space-between;
+  }
+  .example-header-image {
+    background-image: url('https://e7.pngegg.com/pngimages/397/316/png-clipart-question-mark-illustration-computer-icons-iconfinder-question-quiz-icon-question-answer-s-miscellaneous-game-thumbnail.png');
+    background-size: cover;
+  }
+  .button-card{
+    display: flex; 
+    justify-content: space-between;
+  }
+  .quiz-card{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }

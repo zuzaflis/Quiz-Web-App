@@ -1,49 +1,46 @@
 
-
-/* Apply styles to the entire card */
 mat-card {
-    width: 600px; /* Adjust the card width as needed */
-    margin: 0 auto; /* Center the card horizontally */
+    width: 600px; 
+    margin: 0 auto; 
     padding: 20px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
   }
   
-  /* Style the profile image */
+
   .profile-image {
-    width: 150px; /* Adjust the image size as needed */
+    width: 150px; 
     height: 150px;
-    border-radius: 50%; /* Make it a circular image */
+    border-radius: 50%; 
   }
   
-  /* Style the profile name */
+
   .profile-name {
-    font-size: 24px; /* Adjust the font size */
+    font-size: 24px; 
     margin: 10px 0;
   }
   
-  /* Style the table */
+
   .table {
     width: 100%;
     border-collapse: collapse;
   }
   
-  /* Style table cells */
+
   .table td {
     padding: 8px;
-    border-bottom: 1px solid #ddd; /* Add a bottom border to separate rows */
+    border-bottom: 1px solid #ddd; 
   }
   
-  /* Style the "Update" button */
+
   mat-card-actions .mat-button {
-    background-color: #007bff; /* Set a background color */
-    color: #fff; /* Set text color */
+    background-color: #007bff; 
+    color: #fff; 
     border: none;
     border-radius: 5px;
     padding: 8px 16px;
     cursor: pointer;
   }
-  
-  /* Add a hover effect to the button */
+
   mat-card-actions .mat-button:hover {
-    background-color: #0056b3; /* Darker background on hover */
+    background-color: #0056b3; 
   }

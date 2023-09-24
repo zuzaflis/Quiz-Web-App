@@ -1,3 +1,13 @@
 .full-width{
     width: 100%;
 }
+mat-card {
+    width: 40%; 
+    margin: 0 auto; 
+    padding: 20px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); 
+  }
+  .image-style{
+    max-width: 100%; /* Maksymalna szerokość obrazu */
+    height: auto;
+  }

@@ -1,5 +1,4 @@
-
-    <mat-toolbar color = "accent">
+<mat-toolbar class="centered-toolbar element">
         <a 
         routerLink = "/"
       mat-icon-button class="example-icon mr10" 
@@ -8,30 +7,30 @@
         
         <mat-icon>auto_stories</mat-icon>
 </a>
-    <span>Quiz Portal</span>
+    <span>QuizYourKnowledge</span>
 
     <span class="example-spacer"></span>
 
+    <div class="profile-image mr20 mb20">
     <a 
     *ngIf ="storageService.isLoggedIn()"
     routerLink ="/profile"
      mat-icon-button 
-    class="example-icon favorite-icon mr20" 
-    aria-label="Example icon-button with heart icon">
-
+   >
+    <img class="profile-image" src="https://upload.wikimedia.org/wikipedia/commons/2/2c/Default_pfp.svg" alt="Profile Image" />
  {{storageService.getUser().username}}
     </a>
+  </div>
+
+
     <a 
     routerLink ="/login"
      mat-icon-button 
-    class="example-icon favorite-icon mr20" 
+    class="example-icon favorite-icon mr20 ml20" 
     aria-label="Example icon-button with heart icon">
     <mat-icon>login</mat-icon>
     </a>
  
-
-
-
     <button mat-icon-button
     class="example-icon favorite-icon ml20" 
     aria-label="Example icon-button with heart icon"
@@ -40,5 +39,3 @@
     </button>
 
   </mat-toolbar>
-  
-  

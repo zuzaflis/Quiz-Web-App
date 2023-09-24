@@ -39,6 +39,7 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { UpdateAppComponent } from './pages/admin/update-quiz/update-app.component';
 import { ViewQuizQuestionsComponent } from './pages/admin/view-quiz-questions/view-quiz-questions.component';
 import { AddQuestionComponent } from './pages/admin/add-question/add-question.component';
+import { AllQuizzesComponent } from './pages/user/all-quizzes/all-quizzes.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,6 +60,7 @@ import { AddQuestionComponent } from './pages/admin/add-question/add-question.co
     ViewQuizQuestionsComponent,
     AddQuestionComponent,
     UserSideBar,
+    AllQuizzesComponent,
 ],
   imports: [
     BrowserModule,
