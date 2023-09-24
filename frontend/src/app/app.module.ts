@@ -34,13 +34,15 @@ import { ViewQuizzesComponent } from './pages/admin/view-quizzes/view-quizzes.co
 import { AddQuizzComponent } from './pages/admin/add-quizz/add-quizz.component';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatSelectModule} from '@angular/material/select';
-
+import {MatDividerModule} from '@angular/material/divider';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { UpdateAppComponent } from './pages/admin/update-quiz/update-app.component';
 import { ViewQuizQuestionsComponent } from './pages/admin/view-quiz-questions/view-quiz-questions.component';
 import { AddQuestionComponent } from './pages/admin/add-question/add-question.component';
 import { AllQuizzesComponent } from './pages/user/all-quizzes/all-quizzes.component';
 import {MatExpansionModule} from '@angular/material/expansion';
+import { QuizInstructionComponent } from './pages/user/quiz-instruction/quiz-instruction.component';
+import { StartQuizComponent } from './pages/user/start-quiz/start-quiz.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -62,6 +64,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
     AddQuestionComponent,
     UserSideBar,
     AllQuizzesComponent,
+    QuizInstructionComponent,
+    StartQuizComponent,
 ],
   imports: [
     BrowserModule,
@@ -82,7 +86,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MatListModule,
     MatSlideToggleModule,
     MatSelectModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatDividerModule
 
   ],
   providers: [
