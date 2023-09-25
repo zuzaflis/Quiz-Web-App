@@ -1,4 +1,4 @@
-<div *ngIf="!isQuizCompleted">
+<ng-container *ngIf="!isQuizCompleted">
 <mat-card class="info-card">
     <header class="text-center">
         <h1>{{ quiz.title}}</h1>
@@ -6,7 +6,7 @@
     </header>
     <mat-card-content>
       <div class="question-remaining">
-        <span>Question {{ currentQue + 1 }} of {{ numberOfQuestions }}</span>
+        <span>Question {{ currentQue +1 }} of {{ numberOfQuestions }}</span>
       </div>
       <div class="timer">
         <h5>{{ counter }} sec ⌛</h5>
@@ -19,7 +19,7 @@
     </mat-card-content>
   </mat-card>
   
-  <mat-card class="quiz-card">
+  <mat-card class="quiz-card" >
     <mat-card-content>
         <header class="text-center">
             <h1>{{ questions[currentQue].content }}</h1>
@@ -27,16 +27,49 @@
         </header>
         <br/>
         <mat-divider></mat-divider>
-        <mat-radio-group class="response-group">
-            <div class="response-row" *ngFor="let option of [questions[currentQue].option1, questions[currentQue].option2,questions[currentQue].option3, questions[currentQue].option4]">
-              <mat-radio-button>{{ option }}</mat-radio-button>
-            </div>
-          </mat-radio-group>
+
+
+          <div class="option response-group">
+            <ol class="list-decimal ml-5" *ngFor="let option of [questions[currentQue].option1, questions[currentQue].option2, questions[currentQue].option3, questions[currentQue].option4]">
+              <li class="mt-2" (click)="answer(currentQue, option)">
+                <div class="custom-option">
+                  {{ option }}
+                </div>
+              </li>
+            </ol>
+          </div>
+
 
           <div class="button text-center">
         <button mat-raised-button color="accent" (click)="nextQuestion()" [disabled]="currentQue === numberOfQuestions">Next</button>
+        {{points}}
     </div>
+    
+  
+    <div>
+      <button mat-raised-button color="primary" [disabled] = "currentQue+1 !== numberOfQuestions">Submit</button>
+    </div>
+  
 
 </mat-card-content>
 </mat-card>
-</div>
+</ng-container>
+
+<ng-container *ngIf="isQuizCompleted">
+  <mat-card class="quiz-card">
+    <div class="row flex justify-center">
+      <div class="text-center col-md-6 col-sm-12">
+        <mat-card-title class="result-title">Congratulations!!</mat-card-title>
+
+        <p class="result-text">You have completed the quiz</p>
+        <p class="result-text">Below is your result:</p>
+
+        <p class="result-info">Total Questions Attempted: {{ numberOfQuestions }}</p>
+        <p class="result-info">Total Correct Answered: {{ correctAnswer }}</p>
+        <p class="result-info">Total Wrong Answered: {{ incorrectAnswer }}</p>
+
+        <p class="result-score">You Scored <b>{{ points }} points</b> of total {{ totalPoints }}.</p>
+      </div>
+    </div>
+  </mat-card>
+</ng-container>

@@ -37,3 +37,77 @@
   .progress-bar.ng-tns-c1-0 {
     transition: width 0.3s ease;
   }
+
+.option {
+  margin-top: 2rem;
+}
+
+
+.list-decimal {
+  margin-left: 2rem;
+  list-style-type: decimal;
+}
+
+
+.option li {
+  margin-top: 1rem;
+  cursor: pointer;
+}
+
+
+.custom-option {
+  padding: 1rem 1.5rem;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  width: 100%;
+  transition: all 0.3s ease-in-out;
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+
+.custom-option:hover {
+  background-color: #007bff;
+  color: #fff;
+  border-color: #0056b3;
+}
+.result-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333; 
+  margin-bottom: 20px;
+}
+
+.result-text {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #666; 
+}
+
+.result-info {
+  font-size: 16px;
+  margin: 5px 0;
+  color: #888;
+}
+
+.result-score {
+  font-size: 24px;
+  font-weight: bold;
+  color: #007bff; 
+  margin-top: 20px;
+}
+
+.row.flex.justify-center {
+  display: flex;
+  justify-content: center;
+}
+
+.col-md-6 {
+  flex: 0 0 50%;
+  max-width: 50%;
+}
+
+.col-sm-12 {
+  flex: 0 0 100%;
+  max-width: 100%;
+}

@@ -21,7 +21,8 @@ export class StartQuizComponent implements OnInit{
      option3: '',
      option4: '',
      answer: '',
-     quizId:''
+     quizId:'',
+     givenAnswer:''
      
    },
   ];
@@ -29,12 +30,16 @@ export class StartQuizComponent implements OnInit{
     title:'',
   }
   points: number = 0;
+  totalPoints: number = 0;
+  totalTime:number = 0;
   counter = 60;
   userAnswer: any;
   isQuizCompleted: boolean = false;
   numberOfQuestions: any;
+  correctAnswer: number = 0;
+  incorrectAnswer: number = 0;
 
-  currentQue: number = 0;
+  currentQue: any = 0;
   interval$: any;
   progress: string = '0';
 
@@ -48,28 +53,56 @@ export class StartQuizComponent implements OnInit{
 
 
   ngOnInit(): void {
-    this.preventButtonBack();
+    //this.preventButtonBack();
     this.qId = this._route.snapshot.params['qid'];
     this.loadQuestions();
     this.loadQuiz();
-    this.startCounter();
+   
+   
   }
 
   loadQuestions(){
     this._question.getQuestionsOfQuiz(this.qId).subscribe((data:any)=>{
       this.questions = data;
-      console.log(this.questions);
+
       this.numberOfQuestions = this.questions.length;
+      this.totalPoints = this.numberOfQuestions*10;
+      this.totalTime = this.numberOfQuestions*1000;
+      
+      this.startCounter();
 
     },(error)=>{
       console.log(error);
     })
   }
+
   loadQuiz(){
     this._quiz.getSingleQuiz(this.qId).subscribe((data:any)=>{
       this.quiz = data;
     })
 
+  }
+  answer(currentQno:number,option:any ){
+    if(currentQno == this.numberOfQuestions){
+      this.isQuizCompleted = true;
+      this.stopCounter();
+    }
+    if(option == this.questions[currentQno].answer){
+      this.points +=10;
+      this.correctAnswer++;
+      setTimeout(()=>{
+        this.questions[this.currentQue++];
+        this.resetCounter();
+        this.getProgressPercent();
+      },1000);
+    }else{
+      setTimeout(()=> {
+        this.questions[this.currentQue++];
+        this.resetCounter();
+        this.incorrectAnswer++;
+        this.getProgressPercent();
+      },1000);
+    }
   }
 
   preventButtonBack(){
@@ -86,11 +119,12 @@ export class StartQuizComponent implements OnInit{
       if(this.counter === 0){
        this.questions[this.currentQue++];
         this.counter = 60;
+        this.getProgressPercent();
     }
   }); 
   setTimeout(()=> {
     this.interval$.unsubscribe();
-  },600000) // usatwic czas zgodnie z iloscia pytan
+  },this.totalTime) // usatwic czas zgodnie z iloscia pytan
     }
 
     stopCounter(){
@@ -113,9 +147,11 @@ export class StartQuizComponent implements OnInit{
     }
 
     nextQuestion(){
+      if(this.currentQue!=this.numberOfQuestions){
       this.questions[this.currentQue++];
       this.resetCounter();
       this.getProgressPercent();
+      }
     }
   }
 
