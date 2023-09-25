@@ -57,9 +57,7 @@ export class StartQuizComponent implements OnInit{
     this.qId = this._route.snapshot.params['qid'];
     this.loadQuestions();
     this.loadQuiz();
-   
-   
-  }
+    }
 
   loadQuestions(){
     this._question.getQuestionsOfQuiz(this.qId).subscribe((data:any)=>{
@@ -67,8 +65,8 @@ export class StartQuizComponent implements OnInit{
 
       this.numberOfQuestions = this.questions.length;
       this.totalPoints = this.numberOfQuestions*10;
-      this.totalTime = this.numberOfQuestions*1000;
-      
+      this.totalTime = this.numberOfQuestions*60000;
+  
       this.startCounter();
 
     },(error)=>{
@@ -83,10 +81,12 @@ export class StartQuizComponent implements OnInit{
 
   }
   answer(currentQno:number,option:any ){
-    if(currentQno == this.numberOfQuestions){
+
+    if(currentQno+1 == this.numberOfQuestions){
       this.isQuizCompleted = true;
       this.stopCounter();
     }
+
     if(option == this.questions[currentQno].answer){
       this.points +=10;
       this.correctAnswer++;
@@ -124,7 +124,9 @@ export class StartQuizComponent implements OnInit{
   }); 
   setTimeout(()=> {
     this.interval$.unsubscribe();
-  },this.totalTime) // usatwic czas zgodnie z iloscia pytan
+    this.isQuizCompleted=true;
+    this.stopCounter();
+  },this.totalTime)
     }
 
     stopCounter(){

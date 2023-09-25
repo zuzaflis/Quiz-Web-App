@@ -41,7 +41,7 @@
 
 
           <div class="button text-center">
-        <button mat-raised-button color="accent" (click)="nextQuestion()" [disabled]="currentQue === numberOfQuestions">Next</button>
+        <button mat-raised-button color="accent" (click)="nextQuestion()" [disabled]="currentQue+1 === numberOfQuestions">Next</button>
         {{points}}
     </div>
     

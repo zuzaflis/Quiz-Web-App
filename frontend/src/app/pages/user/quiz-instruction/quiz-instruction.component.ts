@@ -44,10 +44,8 @@ quiz = {
   startQuiz(){
     Swal.fire({
       title: 'Do you want to start?',
-      showDenyButton: true,
       showCancelButton: true,
       confirmButtonText: 'Yes',
-      denyButtonText: `Cancel`,
     }).then((result) => {
       if (result.isConfirmed) {
         this.router.navigateByUrl('/start/'+this.qId);

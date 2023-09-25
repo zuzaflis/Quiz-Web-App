@@ -44,6 +44,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import { QuizInstructionComponent } from './pages/user/quiz-instruction/quiz-instruction.component';
 import { StartQuizComponent } from './pages/user/start-quiz/start-quiz.component';
 import {MatRadioModule} from '@angular/material/radio';
+import { NgxUiLoaderHttpModule, NgxUiLoaderModule } from 'ngx-ui-loader';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -90,6 +92,10 @@ import {MatRadioModule} from '@angular/material/radio';
     MatExpansionModule,
     MatDividerModule,
     MatRadioModule,
+    NgxUiLoaderModule,
+    NgxUiLoaderHttpModule.forRoot({
+      showForeground: true,
+    })
 
   ],
   providers: [
