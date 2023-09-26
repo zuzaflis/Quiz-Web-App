@@ -1,12 +1,8 @@
 package com.portal.demo;
 
-import com.portal.demo.auth.AuthenticationService;
-import com.portal.demo.auth.RegisterRequest;
-import com.portal.demo.model.Role;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 public class DemoApplication implements CommandLineRunner {

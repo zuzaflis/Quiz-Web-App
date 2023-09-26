@@ -57,8 +57,15 @@ export class StartQuizComponent implements OnInit{
     this.qId = this._route.snapshot.params['qid'];
     this.loadQuestions();
     this.loadQuiz();
+
+
     }
 
+    sendToEvaluate(){
+      this._question.evalQuestions(this.questions).subscribe((data:any)=>{
+        console.log("send");
+      })
+    }
   loadQuestions(){
     this._question.getQuestionsOfQuiz(this.qId).subscribe((data:any)=>{
       this.questions = data;
@@ -82,14 +89,17 @@ export class StartQuizComponent implements OnInit{
   }
   answer(currentQno:number,option:any ){
 
-    if(currentQno+1 == this.numberOfQuestions){
+    if(currentQno== this.numberOfQuestions){
       this.isQuizCompleted = true;
       this.stopCounter();
+      console.log(this.questions);
+      this.sendToEvaluate();
     }
 
     if(option == this.questions[currentQno].answer){
       this.points +=10;
       this.correctAnswer++;
+      this.questions[currentQno].givenAnswer = option;
       setTimeout(()=>{
         this.questions[this.currentQue++];
         this.resetCounter();
@@ -97,9 +107,10 @@ export class StartQuizComponent implements OnInit{
       },1000);
     }else{
       setTimeout(()=> {
+        this.questions[currentQno].givenAnswer = option;
+        this.incorrectAnswer++;
         this.questions[this.currentQue++];
         this.resetCounter();
-        this.incorrectAnswer++;
         this.getProgressPercent();
       },1000);
     }
@@ -150,6 +161,7 @@ export class StartQuizComponent implements OnInit{
 
     nextQuestion(){
       if(this.currentQue!=this.numberOfQuestions){
+        this.questions[this.currentQue].givenAnswer="";
       this.questions[this.currentQue++];
       this.resetCounter();
       this.getProgressPercent();

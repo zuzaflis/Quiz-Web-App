@@ -61,4 +61,10 @@ public class QuestionController {
     public void deleteQuestion(@PathVariable("Id") Long id){
         this.questionService.deleteQuestion(id);
     }
+
+    @PostMapping("/eval")
+    public Map<String, Object> evalQuestions(@RequestBody List<Question> questions){
+
+        return this.questionService.evaluateAnswers(questions);
+    }
 }

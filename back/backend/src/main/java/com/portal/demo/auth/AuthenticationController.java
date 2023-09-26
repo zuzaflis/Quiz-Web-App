@@ -1,5 +1,6 @@
 package com.portal.demo.auth;
 
+import com.portal.demo.dto.RegisterRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.slf4j.Logger;

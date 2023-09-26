@@ -19,4 +19,7 @@ public addQuestion(question: any){
 public deleteQuestion(questionId: any){
   return this._http.delete(`http://localhost:8080/question/${questionId}`)
 }
+public evalQuestions(questions: any){
+  return this._http.post(`http://localhost:8080/question/eval`, questions);
+}
 }

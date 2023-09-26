@@ -1,4 +1,4 @@
-package com.portal.demo.auth;
+package com.portal.demo.dto;
 
 import com.portal.demo.model.Role;
 import lombok.*;

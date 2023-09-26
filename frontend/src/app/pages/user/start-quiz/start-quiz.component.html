@@ -30,7 +30,7 @@
 
 
           <div class="option response-group">
-            <ol class="list-decimal ml-5" *ngFor="let option of [questions[currentQue].option1, questions[currentQue].option2, questions[currentQue].option3, questions[currentQue].option4]">
+            <ol class="list-decimal ml-5" *ngFor="let option of [questions[currentQue].option1, questions[currentQue].option2, questions[currentQue].option3, questions[currentQue].option4], let i = index">
               <li class="mt-2" (click)="answer(currentQue, option)">
                 <div class="custom-option">
                   {{ option }}
@@ -73,3 +73,4 @@
     </div>
   </mat-card>
 </ng-container>
+{{questions |json}}

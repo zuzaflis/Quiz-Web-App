@@ -2,6 +2,7 @@ package com.portal.demo.auth;
 
 
 import com.portal.demo.config.JwtService;
+import com.portal.demo.dto.RegisterRequest;
 import com.portal.demo.model.Role;
 import com.portal.demo.model.User;
 import com.portal.demo.repository.UserRepository;

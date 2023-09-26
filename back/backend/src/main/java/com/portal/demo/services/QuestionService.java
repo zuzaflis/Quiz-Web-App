@@ -12,9 +12,8 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.HashSet;
-import java.util.Optional;
-import java.util.Set;;
+import java.util.*;
+;
 
 @Service
 @RequiredArgsConstructor
@@ -65,5 +64,29 @@ public class QuestionService {
             this.questionRepository.delete(question);
         }
     }
+
+    public Map<String,Object> evaluateAnswers(List<Question> questions){
+        Integer points = 0;
+        Integer correctAnswers = 0;
+        Integer attempted = 0;
+
+        for(Question q : questions){
+            System.out.println(q.getGivenAnswer());
+            if(q.getGivenAnswer() == null){
+                continue;
+            }else if(q.getAnswer().trim().equals(q.getGivenAnswer().trim())){
+                correctAnswers++;
+                points+=10;
+            }else if(q.getGivenAnswer() !=null || !q.getGivenAnswer().trim().equals("")){
+              attempted++;
+            } 
+        }
+
+
+        Map<String,Object> map = Map.of("points",points,"correctAnswers",correctAnswers, "attempted",attempted);
+
+        return map;
+    }
+
 }
 
