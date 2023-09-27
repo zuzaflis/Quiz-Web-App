@@ -1,5 +1,6 @@
 package com.portal.demo.controllers;
 
+import com.portal.demo.dto.EvalRequest;
 import com.portal.demo.dto.QuestionRequest;
 import com.portal.demo.model.exam.Question;
 import com.portal.demo.model.exam.Quiz;
@@ -63,8 +64,8 @@ public class QuestionController {
     }
 
     @PostMapping("/eval")
-    public Map<String, Object> evalQuestions(@RequestBody List<Question> questions){
+    public Map<String, Object> evalQuestions(@RequestBody EvalRequest evalRequest){
 
-        return this.questionService.evaluateAnswers(questions);
+        return this.questionService.evaluateAnswers(evalRequest);
     }
 }

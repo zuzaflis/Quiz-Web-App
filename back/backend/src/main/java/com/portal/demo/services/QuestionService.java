@@ -1,10 +1,15 @@
 package com.portal.demo.services;
 
+import com.portal.demo.dto.EvalRequest;
 import com.portal.demo.dto.QuestionRequest;
+import com.portal.demo.model.User;
 import com.portal.demo.model.exam.Question;
 import com.portal.demo.model.exam.Quiz;
+import com.portal.demo.model.exam.Result;
 import com.portal.demo.repository.QuestionRepository;
 import com.portal.demo.repository.QuizRepository;
+import com.portal.demo.repository.ResultRepository;
+import com.portal.demo.repository.UserRepository;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.persistence.PersistenceContext;
@@ -20,6 +25,8 @@ import java.util.*;
 public class QuestionService {
     private final QuizRepository quizRepository;
     private final QuestionRepository questionRepository;
+    private final UserRepository userRepository;
+    private final ResultRepository resultRepository;
     @PersistenceContext
     private EntityManager entityManager;
     @Transactional
@@ -65,9 +72,15 @@ public class QuestionService {
         }
     }
 
-    public Map<String,Object> evaluateAnswers(List<Question> questions){
+    @Transactional
+    public Map<String,Object> evaluateAnswers(EvalRequest evalRequest){
+        List<Question> questions = evalRequest.getQuestions();
+       String quizTitle = questions.get(0).getQuiz().getTitle();
+
+
         Integer points = 0;
         Integer correctAnswers = 0;
+        Integer inCorrectAnswers = 0;
         Integer attempted = 0;
 
         for(Question q : questions){
@@ -79,11 +92,28 @@ public class QuestionService {
                 points+=10;
             }else if(q.getGivenAnswer() !=null || !q.getGivenAnswer().trim().equals("")){
               attempted++;
+              inCorrectAnswers++;
             } 
         }
+        Long userId = evalRequest.getUserId();
+        Optional<User> userOpt = userRepository.findById(userId);
+       if(userOpt.isPresent()){
+            User user = userOpt.get();
 
+           Result result = Result.builder()
+                   .correctAnswers(correctAnswers)
+                   .incorrectAnswers(inCorrectAnswers)
+                   .points(points)
+                   .attempted(attempted)
+                   .quizTitle(quizTitle)
+                   .user(user)
+                   .build();
+
+           resultRepository.save(result);
+       } else throw new EntityNotFoundException("User with this id not found!");
 
         Map<String,Object> map = Map.of("points",points,"correctAnswers",correctAnswers, "attempted",attempted);
+
 
         return map;
     }

@@ -1,8 +1,12 @@
 package com.portal.demo;
 
+import com.portal.demo.auth.AuthenticationService;
+import com.portal.demo.dto.RegisterRequest;
+import com.portal.demo.model.Role;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 public class DemoApplication implements CommandLineRunner {
@@ -34,7 +38,7 @@ public class DemoApplication implements CommandLineRunner {
 			System.out.println("Admin token: "+ service.register(admin).getToken());
 		};
 	}
+*/
 
- */
 }
 

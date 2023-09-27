@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { QuestionService } from 'src/app/_services/question.service';
 import { QuizService } from 'src/app/_services/quiz.service';
 import { interval } from 'rxjs';
+import { StorageService } from 'src/app/_services/storage.service';
 
 @Component({
   selector: 'app-start-quiz',
@@ -12,6 +13,7 @@ import { interval } from 'rxjs';
 })
 export class StartQuizComponent implements OnInit{
   qId: any;
+ userId: number =0;
   questions =[
     {
       content: '',
@@ -29,6 +31,7 @@ export class StartQuizComponent implements OnInit{
   quiz ={
     title:'',
   }
+
   points: number = 0;
   totalPoints: number = 0;
   totalTime:number = 0;
@@ -49,6 +52,7 @@ export class StartQuizComponent implements OnInit{
     private _route: ActivatedRoute,
     private _question: QuestionService,
     private _quiz: QuizService,
+    private storageService: StorageService
   ) {}
 
 
@@ -62,7 +66,13 @@ export class StartQuizComponent implements OnInit{
     }
 
     sendToEvaluate(){
-      this._question.evalQuestions(this.questions).subscribe((data:any)=>{
+      this.userId = this.storageService.getUser().id;
+      console.log(this.userId);
+      const dataToSend = {
+        userId: this.userId,
+        questions: this.questions,
+      };
+      this._question.evalQuestions(dataToSend).subscribe((data:any)=>{
         console.log("send");
       })
     }
