@@ -13,12 +13,22 @@ export class NavbarComponent {
      private authService: AuthService){}
   currentUser: any;
 
+
   profile(): void {
     this.currentUser = this.storageService.getUser();
   }
+
   logout(): void {
     this.storageService.clean();
     window.location.reload();
+  }
+
+  isLoggedIn() : boolean { 
+    return this.storageService.isLoggedIn();
+  }
+
+  getUsername() : string {
+    return this.storageService.getUser().username;
   }
 
 }

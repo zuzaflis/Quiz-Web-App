@@ -77,10 +77,15 @@ const routes: Routes = [
   },
 ]
 },
-{ path: 'user-board', 
+{ 
+  path: 'user-board',
 component: UserDashboardComponent,
 canActivate: [LoginGuard],
 children: [
+  {
+  path:'home',
+  component: HomeComponent
+  },
   {
     path:':catId',
     component: AllQuizzesComponent

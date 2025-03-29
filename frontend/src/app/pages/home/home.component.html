@@ -1,3 +1,35 @@
-
-
-<p>home works!</p>
+<div class="bootstrap-wrapper">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-10">
+          <div class="rules-container">
+            <h2 class="section-title">Quizly Rules</h2>
+            <div class="rules-wrapper">
+              <div class="rule-card student-rules">
+                <h3>For Students</h3>
+                <ul>
+                  <li>Complete quizzes within the given time limit</li>
+                  <li>Answer questions honestly - cheating will result in penalties</li>
+                  <li>Review feedback after each quiz</li>
+                  <li>Contact teachers for clarification on questions</li>
+                </ul>
+              </div>
+  
+              <div class="rule-card teacher-rules">
+                <h3>For Teachers</h3>
+                <ul>
+                  <li>Create quizzes with clear instructions</li>
+                  <li>Set reasonable time limits for each quiz</li>
+                  <li>Provide detailed feedback for student answers</li>
+                  <li>Monitor student progress regularly</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+  
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+    </div>
+  </div>
+  

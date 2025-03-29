@@ -1,0 +1,79 @@
+.rules-container {
+    margin: 20px 0;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+  
+  .section-title {
+    color: #2c3e50;
+    border-bottom: 3px solid #3498db;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .rules-wrapper {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .rule-card {
+    flex: 1;
+    min-width: 300px;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    transition: transform 0.3s;
+  }
+  
+  .student-rules {
+    border-left: 4px solid #e74c3c;
+  }
+  
+  .teacher-rules {
+    border-left: 4px solid #2ecc71;
+  }
+  
+  .rule-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .rule-card h3 {
+    color: #2c3e50;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+  }
+  
+  .rule-card ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .rule-card li {
+    margin-bottom: 10px;
+    padding-left: 20px;
+    position: relative;
+  }
+  
+  .rule-card li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #3498db;
+    font-weight: bold;
+  }
+  
+  @media (max-width: 768px) {
+    .rules-wrapper {
+      flex-direction: column;
+    }
+    .rule-card {
+      min-width: 100%;
+      margin: 10px 0;
+    }
+  }
+  

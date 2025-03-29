@@ -1,19 +1,111 @@
-.centered-toolbar {
+.centered-toolbar.element {
+  background: linear-gradient(135deg, #4c72d3 0%, #262e8b 100%);
+  color: antiquewhite;
+  padding: 0 25px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  width: 100%;
+  height: 60px;
+  z-index: 1000;
   display: flex;
-  justify-content: space-between;
-  padding: 0 20%; 
-  align-items: center;
 }
-.example-spacer {
-    flex: 1 1 auto;
-  }
-  .profile-image {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%; 
-  }
-  .element{
-    color:antiquewhite;
-    background-color: #8B2635;
 
+.toolbar-left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.brand-icon {
+  background: rgba(255,255,255,0.1);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.brand-title {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.toolbar-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.profile-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 60px;
+  margin-top: 3px;
+}
+
+.profile-button {
+  background: rgba(255,255,255,0.1);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid antiquewhite;
+}
+
+.username {
+  color: antiquewhite;
+  font-weight: 500;
+  font-size: 0.9rem;
+  margin-left: 8px;
+}
+
+.auth-buttons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.auth-button {
+  background: rgba(255,255,255,0.1);
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.auth-button:hover,
+.profile-button:hover,
+.brand-icon:hover {
+  background: rgba(255,255,255,0.15);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .centered-toolbar.element {
+    padding: 0 10px;
   }
+  .brand-title {
+    font-size: 1.2rem;
+  }
+}

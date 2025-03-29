@@ -14,4 +14,18 @@ export class ProfileComponent implements OnInit {
    ngOnInit(): void {
      this.currentUser = this.storageService.getUser();
   }
+  
+  isLoggedIn() : boolean { 
+    return this.storageService.isLoggedIn();
+  }
+
+  getUsername() : string {
+    return this.storageService.getUser().username();
+  }
+  logout(): void {
+    this.storageService.clean();
+    window.location.reload();
+  }
+
+
 }

@@ -1,41 +1,55 @@
 <mat-toolbar class="centered-toolbar element">
-        <a 
-        routerLink = "/"
-      mat-icon-button class="example-icon mr10" 
-     aria-label="Example icon-button with menu icon">
-     
-        
-        <mat-icon>auto_stories</mat-icon>
-</a>
-    <span>QuizYourKnowledge</span>
-
-    <span class="example-spacer"></span>
-
-    <div class="profile-image mr20 mb20">
+  <!-- Left Section -->
+  <div class="toolbar-left">
     <a 
-    *ngIf ="storageService.isLoggedIn()"
-    routerLink ="/profile"
-     mat-icon-button 
-   >
-    <img class="profile-image" src="https://upload.wikimedia.org/wikipedia/commons/2/2c/Default_pfp.svg" alt="Profile Image" />
- {{storageService.getUser().username}}
+      routerLink="/user-board/home" 
+      mat-icon-button 
+      class="brand-icon"
+      aria-label="Home"
+    >
+      <mat-icon>auto_stories</mat-icon>
     </a>
+    <span class="brand-title">Quizly</span>
   </div>
 
+  <!-- Spacer -->
+  <span class="example-spacer"></span>
 
-    <a 
-    routerLink ="/login"
-     mat-icon-button 
-    class="example-icon favorite-icon mr20 ml20" 
-    aria-label="Example icon-button with heart icon">
-    <mat-icon>login</mat-icon>
-    </a>
- 
-    <button mat-icon-button
-    class="example-icon favorite-icon ml20" 
-    aria-label="Example icon-button with heart icon"
-    (click)="logout()">
-    <mat-icon>logout</mat-icon>
-    </button>
+  <!-- Right Section -->
+  <div class="toolbar-right">
+    <!-- Profile Section -->
+    <span class="username">{{ getUsername() }}</span>
+    <div class="profile-section" *ngIf="isLoggedIn()">
+      <a 
+        routerLink="/profile" 
+        mat-icon-button 
+        class="profile-button"
+      >
+        <img class="profile-image" src="https://upload.wikimedia.org/wikipedia/commons/2/2c/Default_pfp.svg" alt="Profile Image" />
 
-  </mat-toolbar>
+      </a>
+    </div>
+
+    <!-- Login/Logout Buttons -->
+    <div class="auth-buttons">
+      <a 
+        *ngIf="!isLoggedIn()" 
+        routerLink="/login" 
+        mat-icon-button 
+        class="auth-button"
+        aria-label="Login"
+      >
+        <mat-icon>login</mat-icon>
+      </a>
+      <button 
+        *ngIf="isLoggedIn()" 
+        mat-icon-button 
+        class="auth-button"
+        (click)="logout()"
+        aria-label="Logout"
+      >
+        <mat-icon>logout</mat-icon>
+      </button>
+    </div>
+  </div>
+</mat-toolbar>
