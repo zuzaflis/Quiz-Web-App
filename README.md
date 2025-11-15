@@ -16,6 +16,7 @@ This version uses images from Docker Hub — you **do not need the full source c
 git clone <your-docker-compose-repo>.git
 cd Quiz-Web-App
 ```
+Or download docker-compose.yml and exam_portal.sql
 
 
 Pull the latest images:
@@ -31,7 +32,11 @@ docker compose up -d
 ```
 Frontend application will be available at:
 
-http://localhost
+http://localhost:4200
+
+ADMIN/USER
+login: user, pass: user
+login: admin, pass: admin
 
 To stop and remove containers:
 
