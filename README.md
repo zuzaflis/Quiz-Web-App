@@ -36,7 +36,8 @@ http://localhost:4200
 
 ADMIN/USER
 login: user, pass: user
-login: admin, pass: admin
+
+login: admin1, pass: admin
 
 To stop and remove containers:
 
