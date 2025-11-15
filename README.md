@@ -16,25 +16,26 @@ This version uses images from Docker Hub — you **do not need the full source c
 git clone <your-docker-compose-repo>.git
 cd Quiz-Web-App
 Pull the latest images:
+```
+```bash
 
-bash
-Skopiuj kod
 docker compose pull
+```
 Start all containers:
 
-bash
-Skopiuj kod
+```bash
 docker compose up -d
+```
 Frontend application will be available at:
 
-arduino
-Skopiuj kod
 http://localhost
+
 To stop and remove containers:
 
-bash
-Skopiuj kod
+```bash
+
 docker compose down
+```
 Container Overview
 mysql-db — MySQL database initialized with exam_portal.sql
 
