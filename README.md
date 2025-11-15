@@ -1,0 +1,1 @@
+Make sure Docker Desktop is running, then open a terminal in this folder and type docker-compose up --build to launch the entire application. This command automatically builds, starts, and connects the Frontend (http://localhost), Backend (http://localhost:8080), and a pre-populated MySQL database.
