@@ -15,8 +15,11 @@ This version uses images from Docker Hub — you **do not need the full source c
 ```bash
 git clone <your-docker-compose-repo>.git
 cd Quiz-Web-App
-Pull the latest images:
 ```
+
+
+Pull the latest images:
+
 ```bash
 
 docker compose pull
