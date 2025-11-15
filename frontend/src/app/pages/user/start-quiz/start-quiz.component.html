@@ -29,20 +29,19 @@
         <mat-divider></mat-divider>
 
 
-          <div class="option response-group">
-            <ol class="list-decimal ml-5" *ngFor="let option of [questions[currentQue].option1, questions[currentQue].option2, questions[currentQue].option3, questions[currentQue].option4], let i = index">
-              <li class="mt-2" (click)="answer(currentQue, option)">
-                <div class="custom-option">
-                  {{ option }}
-                </div>
-              </li>
-            </ol>
-          </div>
+        <div class="option response-group">
+          <ol class="list-decimal ml-5">
+            <li class="mt-2" *ngFor="let option of [questions[currentQue].option1, questions[currentQue].option2, questions[currentQue].option3, questions[currentQue].option4]; let i = index" (click)="answer(currentQue, option)">
+              <div class="custom-option">
+                {{ option }}
+              </div>
+            </li>
+          </ol>
+        </div>
 
 
           <div class="button text-center">
         <button mat-raised-button color="accent" (click)="nextQuestion()" [disabled]="currentQue+1 === numberOfQuestions">Next</button>
-        {{points}}
     </div>
     
   
@@ -56,21 +55,52 @@
 </ng-container>
 
 <ng-container *ngIf="isQuizCompleted">
+  <mat-card class="info-card">
+    <header class="text-center">
+        <h1>{{ quiz.title}}</h1>
+      
+    </header>
+    <mat-card-content>
+      <div class="question-remaining">
+        <span>Question {{ numberOfQuestions }} of {{ numberOfQuestions }}</span>
+      </div>
+      <div class="timer">
+        <h5>Time's up! ⌛</h5>
+      </div>
+  
+      <div class="progress-container">
+        <div class="progress-bar" [style.width.%]="100">{{ 100 }}%</div>
+      </div>
+      
+    </mat-card-content>
+  </mat-card>
   <mat-card class="quiz-card">
     <div class="row flex justify-center">
       <div class="text-center col-md-6 col-sm-12">
-        <mat-card-title class="result-title">Congratulations!!</mat-card-title>
-
-        <p class="result-text">You have completed the quiz</p>
+        <mat-card-title class="result-title">Finish!</mat-card-title>
+        <div class="text-center">
+          <img src="../../../assets/cong.png" alt="iconR" class="image-style">
+      </div>
+        <p class="result-text">You have completed this quiz</p>
         <p class="result-text">Below is your result:</p>
+        <br/>
+        <mat-divider></mat-divider>
 
         <p class="result-info">Total Questions Attempted: {{ numberOfQuestions }}</p>
-        <p class="result-info">Total Correct Answered: {{ correctAnswer }}</p>
-        <p class="result-info">Total Wrong Answered: {{ incorrectAnswer }}</p>
+
+        <p class="result-info">Correct: {{ correctAnswer }} Wrong: {{ incorrectAnswer }}</p>
+        <!-- <p class="result-info">Wrong: {{ incorrectAnswer }}</p> -->
+
 
         <p class="result-score">You Scored <b>{{ points }} points</b> of total {{ totalPoints }}.</p>
       </div>
     </div>
   </mat-card>
+  <div class="button text-center">
+    <button mat-raised-button color="primary" (click)="goToHome()">Go to Home</button>
+    <br/> 
+    <br/>
+    <button mat-raised-button color="accent" (click)="restartQuiz()">Restart Quiz</button>
+  </div>
 </ng-container>
-{{questions |json}}
+

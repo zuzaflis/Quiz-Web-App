@@ -9,7 +9,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 
-
+// Zarządza operacjami uwierzytelniania użytkowników.
 @RestController
 @CrossOrigin(origins = "http://localhost:4200", allowedHeaders = "*", allowCredentials = "true")
 @RequiredArgsConstructor
@@ -22,20 +22,22 @@ public class AuthenticationController {
     public ResponseEntity<AuthenticationResponse> register(
             @RequestBody RegisterRequest registerRequest)
     {
-       return ResponseEntity.ok(authenticationService.register(registerRequest));
+        // Rejestruje nowego użytkownika.
+        return ResponseEntity.ok(authenticationService.register(registerRequest));
     }
+
     @PostMapping("/authenticate")
     public ResponseEntity<AuthenticationResponse> authenticate(
             @RequestBody AuthenticationRequest authRequest)
-
     {
+        // Uwierzytelnia użytkownika.
         logger.info("Received authentication request for username: {}", authRequest.getUsername());
-
         return ResponseEntity.ok(authenticationService.authenticate(authRequest));
     }
 
     @GetMapping("/current-user")
     public Object getCurrentUser(Authentication authentication) {
+        // Pobiera aktualnie zalogowanego użytkownika.
         return authentication.getPrincipal();
     }
 

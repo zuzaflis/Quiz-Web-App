@@ -27,6 +27,7 @@
 
   .progress-bar {
     height: 1.5rem; 
+    margin-left: 2px;
     text-align: center; 
     line-height: 1.5rem; 
     border-radius: 9999px; 
@@ -72,7 +73,7 @@
   border-color: #0056b3;
 }
 .result-title {
-  font-size: 24px;
+  font-size: 29px;
   font-weight: bold;
   color: #333; 
   margin-bottom: 20px;

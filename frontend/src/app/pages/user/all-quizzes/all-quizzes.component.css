@@ -1,19 +1,52 @@
-.example-card {
-    width: 500px;
-    margin-bottom: 8px;
-    display: flex; 
-    justify-content: space-between;
-  }
-  .example-header-image {
-    background-image: url('https://e7.pngegg.com/pngimages/397/316/png-clipart-question-mark-illustration-computer-icons-iconfinder-question-quiz-icon-question-answer-s-miscellaneous-game-thumbnail.png');
-    background-size: cover;
-  }
-  .button-card{
-    display: flex; 
-    justify-content: space-between;
-  }
-  .quiz-card{
+
+  .quiz-container {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
+    padding: 20px;
+  }
+  
+  .quiz-card {
+    width: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .quiz-avatar {
+    background-color: #f5f5f5;
+    border-radius: 50%;
+  }
+  
+  .quiz-title {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .quiz-category {
+    font-size: 14px;
+    color: #757575;
+  }
+  
+  .quiz-description {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  .quiz-details p {
+    margin: 5px 0;
+    font-size: 14px;
+  }
+  
+  .action-button {
+    margin-right: 10px;
+  }
+  
+  .no-quizzes-card {
+    text-align: center;
+    padding: 20px;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }

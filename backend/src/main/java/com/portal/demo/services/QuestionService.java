@@ -29,8 +29,11 @@ public class QuestionService {
     private final ResultRepository resultRepository;
     @PersistenceContext
     private EntityManager entityManager;
+
+    // Zarządza operacjami CRUD dla pytań quizowych.
     @Transactional
     public Question addQuestion(QuestionRequest questionRequest){
+        // Dodaje nowe pytanie do quizu.
         Long quizId =questionRequest.getQuizId();
         Optional<Quiz> optionalQuiz = this.quizRepository.findById(quizId);
 
