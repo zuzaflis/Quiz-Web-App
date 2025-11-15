@@ -1,12 +1,12 @@
 version: '3.8'
 
 services:
-  # 1. Serwis Bazy Danych (MySQL)
+  # 1. Baza danych MySQL
   mysql-db:
     image: mysql:8.0
     container_name: quiz-mysql-db
     ports:
-      - "3306:3306"
+      - "3307:3306"
     environment:
       MYSQL_ROOT_PASSWORD: "bardzo_silne_haslo_123"
       MYSQL_DATABASE: "quiz_db"
@@ -14,10 +14,10 @@ services:
       - db-data:/var/lib/mysql
       - ./exam_portal.sql:/docker-entrypoint-initdb.d/exam_portal.sql
 
-  # 2. Serwis Backendu (Spring Boot)
+  # 2. Backend Spring Boot
   backend-api:
+    image: zuza2828/quiz-backend:latest
     container_name: quiz-backend-api
-    build: ./backend
     ports:
       - "8080:8080"
     environment:
@@ -25,14 +25,13 @@ services:
       SPRING_DATASOURCE_USERNAME: "root"
       SPRING_DATASOURCE_PASSWORD: "bardzo_silne_haslo_123"
       SPRING_JPA_HIBERNATE_DDL_AUTO: "update"
-
     depends_on:
       - mysql-db
 
-  # 3. Serwis Frontendu (Angular/Nginx)
+  # 3. Frontend Angular / Nginx
   frontend-app:
+    image: zuza2828/quiz-frontend:latest
     container_name: quiz-frontend-app
-    build: ./frontend
     ports:
       - "80:80"
     depends_on:
